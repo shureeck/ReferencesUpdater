@@ -29,6 +29,7 @@ public class main {
             i++;
         }
 
+        //Update reference for AIs
         //Reference xml file will be read
         ReadXML read = new ReadXML();
         Node rootNodeReferenceAI = read.readXML(pathReference);
@@ -66,8 +67,6 @@ public class main {
         //Output Reference file
         OutputReferences output = new OutputReferences();
         output.outputReferences(pathReference, rootNodeReferenceAI);
-
-
 
     }
 }

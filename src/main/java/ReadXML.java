@@ -18,7 +18,7 @@ public class ReadXML {
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder = dbFactory.newDocumentBuilder();
             doc=docBuilder.parse(path);
-         //   doc.getDocumentElement().normalize();
+            doc.getDocumentElement().normalize();
             System.out.println("Done: *.xml file was successfully read and parsed");
 
         }//try

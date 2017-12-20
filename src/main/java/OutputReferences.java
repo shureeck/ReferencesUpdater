@@ -1,5 +1,6 @@
 import org.w3c.dom.Node;
 
+import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
@@ -21,6 +22,8 @@ public class OutputReferences {
         try{
             Files.copy(sourse.toPath(), target.toPath(), REPLACE_EXISTING);
             System.out.println("Done: Reference file "+sourse.getName()+" was copied into "+target.getAbsolutePath());
+            Files.deleteIfExists(sourse.toPath());
+            System.out.println("Done: Reference file "+sourse.getName()+" was deleted");
         }
         catch (IOException e){
             System.out.println("Error: Impossible copy file "+sourse.getName());
@@ -32,8 +35,10 @@ public class OutputReferences {
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             DOMSource domSourcee = new DOMSource(rootReferences.getOwnerDocument());
+            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             StreamResult result = new StreamResult(sourse);
             transformer.transform(domSourcee, result);
+
             System.out.println("Done: Reference "+sourse.getName()+" was created into "+sourse.getAbsolutePath());
         }
         catch (TransformerException e){
