@@ -1,19 +1,20 @@
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
-
+import java.io.File;
 import java.util.ArrayList;
 
 public class main {
     public static void main (String[] args){
-        String pathTestList="E:\\AutoTests\\Temp\\PostgreSQL_MySQL\\test_list.csv";
+       /* String pathTestList="E:\\AutoTests\\Temp\\PostgreSQL_MySQL\\test_list.csv";
         String pathTarget="E:\\AutoTests\\Temp\\PostgreSQL_MySQL\\PostgreSQL_MySQL.sct";
         String pathReference="E:\\AutoTests\\Temp\\PostgreSQL_MySQL\\Reference1.sct";
-
-         /*   Input inPutData = new Input();
-        pathTestList=inPutData.input("Input the path to the Test List");
-        pathTarget=inPutData.input("Input the path to the target.xml (A file with new reference)");
-        pathReference=inPutData.input("Input the path to the reference.xml (A file with all reference objects)");
 */
+
+        Input inPutData = new Input();
+        String pathTestList=inPutData.input("Input the path to the Test List");
+        String pathTarget=inPutData.input("Input the path to the project folder:");
+        String pathReference=inPutData.input("Input the path to the reference folder:\n(ATTENTION: IN THE REFERENCE FOLDER MUST BE PRESENTED REFERENCES FOR CURRENT PAIR ONLY)");
+
         //Testlist will be read from file
         ArrayList<String> stringsTestList = new ArrayList<>();
         ReadFile fileReader = new ReadFile();
@@ -29,10 +30,14 @@ public class main {
             i++;
         }
 
+        //Get paths to AI tests
+        File targAI = GetPath.getSctPath( new File(pathTarget));
+        File referAI=GetPath.getSctPath( new File(pathReference));
+
         //Update reference for AIs
         //Reference xml file will be read
         ReadXML read = new ReadXML();
-        Node rootNodeReferenceAI = read.readXML(pathReference);
+        Node rootNodeReferenceAI = read.readXML(referAI.getPath());
         Element referenceAI = (Element) rootNodeReferenceAI;
 
         //Search AIs for object in reference
@@ -49,7 +54,7 @@ public class main {
         }
 
         //Target sct file will be read
-        Node rootNodeTargetAI = read.readXML(pathTarget);
+        Node rootNodeTargetAI = read.readXML(targAI.getPath());
         Element targetAI = (Element) rootNodeTargetAI;
 
         //Search AIs for object in target
@@ -66,7 +71,6 @@ public class main {
         
         //Output Reference file
         OutputReferences output = new OutputReferences();
-        output.outputReferences(pathReference, rootNodeReferenceAI);
-
+        output.outputReferences(referAI.getPath(), rootNodeReferenceAI);
     }
 }
