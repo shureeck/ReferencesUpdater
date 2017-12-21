@@ -17,8 +17,12 @@ import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 public class OutputReferences {
     public  void outputReferences(String path, Node rootReferences){
         //Copy old References into folder with app
+        File dir =new File("TEMP");
+        if (!dir.exists()){
+            dir.mkdir();
+        }
         File sourse = new File(path);
-        File target = new File(""+"old_"+sourse.getName());
+        File target = new File(dir.toPath()+"\\"+"old_"+sourse.getName());
         try{
             Files.copy(sourse.toPath(), target.toPath(), REPLACE_EXISTING);
             System.out.println("Done: Reference file "+sourse.getName()+" was copied into "+target.getAbsolutePath());
@@ -36,6 +40,7 @@ public class OutputReferences {
             Transformer transformer = transformerFactory.newTransformer();
             DOMSource domSourcee = new DOMSource(rootReferences.getOwnerDocument());
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+            transformer.setOutputProperty(OutputKeys.METHOD, "xml");
             StreamResult result = new StreamResult(sourse);
             transformer.transform(domSourcee, result);
 

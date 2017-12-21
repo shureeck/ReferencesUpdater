@@ -5,9 +5,9 @@ import java.util.ArrayList;
 
 public class main {
     public static void main (String[] args){
-        String pathTestList="E:\\IdeaProjects\\TestProject\\test-list-MYSQL_POSTGRE_all.csv";
-        String pathTarget="E:\\IdeaProjects\\TestProject\\PostgreSQL_MySQL\\PostgreSQL_MySQL1.sct";
-        String pathReference="E:\\IdeaProjects\\TestProject\\PostgreSQL_MySQL\\PostgreSQL_MySQL.sct";
+        String pathTestList="E:\\AutoTests\\Temp\\PostgreSQL_MySQL\\test_list.csv";
+        String pathTarget="E:\\AutoTests\\Temp\\PostgreSQL_MySQL\\PostgreSQL_MySQL.sct";
+        String pathReference="E:\\AutoTests\\Temp\\PostgreSQL_MySQL\\Reference1.sct";
 
          /*   Input inPutData = new Input();
         pathTestList=inPutData.input("Input the path to the Test List");
@@ -43,12 +43,12 @@ public class main {
         //Remove the exist objects
         i=0;
         while (i<referenceNodesAI.size()){
-            Node parent = referenceNodesAI.get(i).getParentNode();
-            parent.removeChild(referenceNodesAI.get(i));
+            Node parentAI = referenceNodesAI.get(i).getParentNode();
+            parentAI.removeChild(referenceNodesAI.get(i));
             i++;
         }
 
-        //Target xml file will be read
+        //Target sct file will be read
         Node rootNodeTargetAI = read.readXML(pathTarget);
         Element targetAI = (Element) rootNodeTargetAI;
 
@@ -63,7 +63,7 @@ public class main {
             updater.updateEtalonAI(targetNodesAI.get(i),rootNodeReferenceAI);
             i++;
         }
-
+        
         //Output Reference file
         OutputReferences output = new OutputReferences();
         output.outputReferences(pathReference, rootNodeReferenceAI);
