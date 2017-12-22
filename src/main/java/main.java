@@ -30,47 +30,25 @@ public class main {
             i++;
         }
 
-        //Get paths to AI tests
+        //Get paths for AI tests
         File targAI = GetPath.getSctPath( new File(pathTarget));
         File referAI=GetPath.getSctPath( new File(pathReference));
 
         //Update reference for AIs
-        //Reference xml file will be read
-        ReadXML read = new ReadXML();
-        Node rootNodeReferenceAI = read.readXML(referAI.getPath());
-        Element referenceAI = (Element) rootNodeReferenceAI;
+        Node rootNodeReferenceAI = ReferenceAI.UpdateRerenceAI(referAI, targAI, testList);
 
-        //Search AIs for object in reference
-        ArrayList <Node> referenceNodesAI = new ArrayList<>();
-        ObjectSearch searchAI = new ObjectSearch();
-        referenceNodesAI.addAll(searchAI.objectSearchAI(referenceAI, testList));
-
-        //Remove the exist objects
-        i=0;
-        while (i<referenceNodesAI.size()){
-            Node parentAI = referenceNodesAI.get(i).getParentNode();
-            parentAI.removeChild(referenceNodesAI.get(i));
-            i++;
-        }
-
-        //Target sct file will be read
-        Node rootNodeTargetAI = read.readXML(targAI.getPath());
-        Element targetAI = (Element) rootNodeTargetAI;
-
-        //Search AIs for object in target
-        ArrayList <Node> targetNodesAI = new ArrayList<>();
-        targetNodesAI.addAll(searchAI.objectSearchAI(targetAI, testList));
-
-        //Updating of the  reference
-        UpdateRefer updater = new UpdateRefer();
-        i=0;
-        while (i<targetNodesAI.size()){
-            updater.updateEtalonAI(targetNodesAI.get(i),rootNodeReferenceAI);
-            i++;
-        }
-        
-        //Output Reference file
+        //Output Reference AI file
         OutputReferences output = new OutputReferences();
         output.outputReferences(referAI.getPath(), rootNodeReferenceAI);
+
+        //Get path for Conversion tests
+        File referConv = GetPath.getReferenceXMLPath(new File(pathReference));
+        File targConv = GetPath.getTargetXMLPath(new File(pathTarget));
+
+        //Update Conversion reference
+        Node rootNodeReference=ReferenceConversion.ubdateConversionRefernce(referConv, targConv,testList);
+
+        //Output Reference file
+        output.outputReferences(referConv.getPath(), rootNodeReference);
     }
 }
