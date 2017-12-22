@@ -57,15 +57,26 @@ public class GetPath {
         List<File> lst = Arrays.asList(arrFiles);
 
         int i=0;
+        int count=0;
         while (i<lst.size()){
             String temp =lst.get(i).getName().trim().toLowerCase();
             if(temp.endsWith(".xml")){
                 outFile=lst.get(i);
+                count++;
                 System.out.println("Done:Reference file "+outFile.getPath()+" was found");
                 break;
             }
             i++;
         }
+
+        if (count>1){
+        System.out.println("Error: There are "+count+" *.sct files in directory "+directory.getPath()+". Must be only one.");
+        outFile=null;
+    }
+        else if(count<1){
+        System.out.println("Error: There are no *.sct files. Must be only one.");
+        outFile=null;
+    }
         return outFile;
     }
 }
