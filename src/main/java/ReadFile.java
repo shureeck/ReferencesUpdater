@@ -32,12 +32,12 @@ public class ReadFile {
 
             catch (FileNotFoundException e) {
                 System.out.println("Error: File not found");
-                e.printStackTrace();
+             //   e.printStackTrace();
             }//catch;
 
             catch (IOException e) {
                 System.out.println("Error: Could not read file");
-                e.printStackTrace();
+              //  e.printStackTrace();
             }//catch;
         }//if
         else{

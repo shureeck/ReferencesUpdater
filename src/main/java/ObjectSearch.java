@@ -50,7 +50,7 @@ public class ObjectSearch {
 
         while (i<testlist.size()){
             tlString=testlist.get(i);
-            objct=tlString.getObjectName().toLowerCase().trim();
+            objct=tlString.getСhildObject().toLowerCase().trim();
 
             NodeList nodelist = rootXML.getElementsByTagName(category);
 
