@@ -30,25 +30,32 @@ public class main {
             i++;
         }
 
-        //Get paths for AI tests
-        File targAI = GetPath.getSctPath( new File(pathTarget));
-        File referAI=GetPath.getSctPath( new File(pathReference));
-
-        //Update reference for AIs
-        Node rootNodeReferenceAI = ReferenceAI.UpdateRerenceAI(referAI, targAI, testList);
-
-        //Output Reference AI file
         OutputReferences output = new OutputReferences();
-        output.outputReferences(referAI.getPath(), rootNodeReferenceAI);
 
-        //Get path for Conversion tests
-        File referConv = GetPath.getReferenceXMLPath(new File(pathReference));
-        File targConv = GetPath.getTargetXMLPath(new File(pathTarget));
+        //Get paths for AI tests
+        if (pathTarget!=null && pathReference!=null) {
+            File targAI = GetPath.getSctPath(new File(pathTarget));
+            File referAI = GetPath.getSctPath(new File(pathReference));
 
-        //Update Conversion reference
-        Node rootNodeReference=ReferenceConversion.ubdateConversionRefernce(referConv, targConv,testList);
+            if (!targAI.equals(null) && !referAI.equals(null)) {
+                //Update reference for AIs
+                Node rootNodeReferenceAI = ReferenceAI.UpdateRerenceAI(referAI, targAI, testList);
 
-        //Output Reference file
-        output.outputReferences(referConv.getPath(), rootNodeReference);
+                //Output Reference AI file
+                output.outputReferences(referAI.getPath(), rootNodeReferenceAI);
+            }
+
+            //Get path for Conversion tests
+            File referConv = GetPath.getReferenceXMLPath(new File(pathReference));
+            File targConv = GetPath.getTargetXMLPath(new File(pathTarget));
+
+            if (!referConv.equals(null) && !targConv.equals(null)) {
+                //Update Conversion reference
+                Node rootNodeReference = ReferenceConversion.ubdateConversionRefernce(referConv, targConv, testList);
+
+                //Output Reference file
+                output.outputReferences(referConv.getPath(), rootNodeReference);
+            }
+        }
     }
 }
