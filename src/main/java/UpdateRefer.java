@@ -19,11 +19,13 @@ public class UpdateRefer {
             if (tmp.getNodeName().equalsIgnoreCase("schema")){
                 schemaName = ((Element)tmp).getAttribute("name");
                 System.out.println("Target schema name is "+schemaName);
+                Logger.setLog("Target schema name is "+schemaName);
                 break;
             }//if
 
             if(tmp.getNodeName().equalsIgnoreCase("tree")){
                 System.out.println("Could not get schema name");
+                Logger.setLog("Could not get schema name");
                 schemaName=null;
                 break;
             }//if
@@ -44,6 +46,7 @@ public class UpdateRefer {
 
         if (parentList.equals(null)){
             System.out.println("Schema "+schemaName+" in reference file was not found");
+            Logger.setLog("Schema "+schemaName+" in reference file was not found");
         }//if
         else{
             i=0;
@@ -51,6 +54,7 @@ public class UpdateRefer {
                  if(((Element)parentList.item(i)).getAttribute("name").equalsIgnoreCase(((Element)parentNode).getAttribute("name"))){
                      targetNode=parentList.item(i);
                      System.out.println("Target category is "+((Element)targetNode).getAttribute("name"));
+                     Logger.setLog("Target category is "+((Element)targetNode).getAttribute("name"));
                      break;
                 }//if
                 i++;
@@ -63,6 +67,7 @@ public class UpdateRefer {
             Node newReferenceNode = doc.importNode(nodeObject, true);
             targetNode.appendChild(newReferenceNode);
             System.out.println("Done:" + targetNode.getNodeName()+" "+((Element) newReferenceNode).getAttribute("name")+" was updated" );
+            Logger.setLog("Done:" + targetNode.getNodeName()+" "+((Element) newReferenceNode).getAttribute("name")+" was updated" );
         }//if
     }
     public void updateEtalonAI(Node nodeObject,Node referenceNode){
@@ -73,6 +78,7 @@ public class UpdateRefer {
         Node newReferenceNode = doc.importNode(nodeObject, true);
         parent.appendChild(newReferenceNode);
         System.out.println("Done:" + parent.getNodeName()+" "+((Element) newReferenceNode).getAttribute("name")+" was updated" );
+        Logger.setLog("Done:" + parent.getNodeName()+" "+((Element) newReferenceNode).getAttribute("name")+" was updated" );
 
     }
 }

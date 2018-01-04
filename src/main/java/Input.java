@@ -8,7 +8,9 @@ public class Input {
         try{
             scanner = new Scanner(System.in);
             inputString=scanner.nextLine().trim();
+            inputString=inputString.replaceAll("\\u202A", "");
             System.out.println("Done: Line was successfully read");
+            Logger.setLog("Done: Line was successfully read");
              if(inputString.equalsIgnoreCase("") || inputString==null){
                  System.out.println("Warning: The string is empty");
                  inputString=null;
@@ -16,6 +18,7 @@ public class Input {
         }
         catch (Exception e){
            System.out.println("Error: Could not read line");
+           Logger.setLog("Error: Could not read line"+"\n"+e.toString());
            e.printStackTrace();
         }
        /* finally {

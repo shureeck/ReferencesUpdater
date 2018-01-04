@@ -33,6 +33,7 @@ public class ObjectSearch {
                 j++;
             }//while
             System.out.println("Done: "+category+": "+objct+" was found "+count);
+            Logger.setLog("Done: "+category+": "+objct+" was found "+count);
         //    testlist.get(i).setItem(item);
          ///   System.out.println("Номер "+item);
             i++;
@@ -76,6 +77,7 @@ public class ObjectSearch {
                 j++;
             }//while
             System.out.println("Done: "+category+": "+objct+" was found "+count);
+            Logger.setLog("Done: "+category+": "+objct+" was found "+count);
             //    testlist.get(i).setItem(item);
             ///   System.out.println("Номер "+item);
             i++;

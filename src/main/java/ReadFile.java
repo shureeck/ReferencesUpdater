@@ -1,7 +1,4 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 
 /**
@@ -16,32 +13,44 @@ public class ReadFile {
             try {
                 sc = new FileReader(path);
                 buffer = new BufferedReader(sc);
-                String line = buffer.readLine();
+                String line = buffer.readLine().trim();
 
                 while (line != null) {
-                    testlist.add(line);
-                    System.out.println("Done: Line was read: " + line);
+                    line.replaceAll("\\u202A", "");
+                    if(line.trim().matches("^\\d+"+"[,]"+".+$"))
+                    {
+                        testlist.add(line);
+                        System.out.println("Done: Line was read: " + line);
+                        Logger.setLog("Done: Line was read: " + line);
+                    }
+                    else{
+                        System.out.println("Error: Read string has wrong format");
+                        Logger.setLog("Error: Read string has wrong format");
+                    }
                     line = buffer.readLine();
-
                 }//while
 
                 buffer.close();
                 sc.close();
-                System.out.println("Done: File was read successfully");
+                System.out.println("Done: File "+new File(path).getName()+" was read successfully");
+                Logger.setLog("Done: File "+new File(path).getName()+" was read successfully");
             }//try
 
             catch (FileNotFoundException e) {
                 System.out.println("Error: File not found");
+                Logger.setLog("Error: File not found");
              //   e.printStackTrace();
             }//catch;
 
             catch (IOException e) {
                 System.out.println("Error: Could not read file");
+                Logger.setLog("Error: Could not read file");
               //  e.printStackTrace();
             }//catch;
         }//if
         else{
             System.out.println("Error: The path to file is missing");
+            Logger.setLog("Error: The path to file is missing");
         }
 
     }// fileRead

@@ -1,3 +1,4 @@
+import org.omg.PortableInterceptor.LOCATION_FORWARD;
 import org.w3c.dom.Node;
 
 import javax.xml.transform.OutputKeys;
@@ -26,11 +27,14 @@ public class OutputReferences {
         try{
             Files.copy(sourse.toPath(), target.toPath(), REPLACE_EXISTING);
             System.out.println("Done: Reference file "+sourse.getName()+" was copied into "+target.getAbsolutePath());
+            Logger.setLog("Done: Reference file "+sourse.getName()+" was copied into "+target.getAbsolutePath());
             Files.deleteIfExists(sourse.toPath());
             System.out.println("Done: Reference file "+sourse.getName()+" was deleted");
+            Logger.setLog("Done: Reference file "+sourse.getName()+" was deleted");
         }
         catch (IOException e){
             System.out.println("Error: Impossible copy file "+sourse.getName());
+            Logger.setLog("Error: Impossible copy file "+sourse.getName()+"\n"+e.toString());
             e.printStackTrace();
         }
 
@@ -45,12 +49,12 @@ public class OutputReferences {
             transformer.transform(domSourcee, result);
 
             System.out.println("Done: Reference "+sourse.getName()+" was created into "+sourse.getAbsolutePath());
+            Logger.setLog("Done: Reference "+sourse.getName()+" was created into "+sourse.getAbsolutePath());
         }
         catch (TransformerException e){
             System.out.println("Error: Impossible create reference "+sourse.getName()+" into "+sourse.getAbsolutePath());
+            Logger.setLog("Error: Impossible create reference "+sourse.getName()+" into "+sourse.getAbsolutePath()+"\n"+e.toString());
             e.printStackTrace();
         }
-
-
     }
 }
