@@ -8,10 +8,8 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.text.Format;
 
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 

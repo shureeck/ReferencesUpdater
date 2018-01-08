@@ -43,6 +43,7 @@ public class ReferenceConversion {
             updater.updateEtalon(targetNodes.get(i),rootNodeReference);
             i++;
         }
+        updater.getListUpdatedObkects();
 
         return rootNodeReference;
     }

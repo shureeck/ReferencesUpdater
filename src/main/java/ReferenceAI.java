@@ -32,7 +32,7 @@ public class ReferenceAI {
         Element targetAI = (Element) rootNodeTargetAI;
 
         //Search AIs for object in target
-        ArrayList <org.w3c.dom.Node> targetNodesAI = new ArrayList<>();
+        ArrayList <Node> targetNodesAI = new ArrayList<>();
         targetNodesAI.addAll(searchAI.objectSearchAI(targetAI, testList));
 
         //Updating of the  reference

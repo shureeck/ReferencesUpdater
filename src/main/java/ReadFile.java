@@ -17,15 +17,15 @@ public class ReadFile {
 
                 while (line != null) {
                     line.replaceAll("\\u202A", "");
-                    if(line.trim().matches("^\\d+"+"[,]"+".+$"))
+                    if(line.trim().matches("^\\d+[,].+[,].*[,].+[,].*$"))
                     {
                         testlist.add(line);
                         System.out.println("Done: Line was read: " + line);
                         Logger.setLog("Done: Line was read: " + line);
                     }
                     else{
-                        System.out.println("Error: Read string has wrong format");
-                        Logger.setLog("Error: Read string has wrong format");
+                        System.out.println("Error: Read string has wrong format: "+ line);
+                        Logger.setLog("Error: Read string has wrong format: "+ line);
                     }
                     line = buffer.readLine();
                 }//while

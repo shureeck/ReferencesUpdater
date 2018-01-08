@@ -55,7 +55,7 @@ public class TestListString {
     public String getTestListLine (){
         String line;
         if (parentObject==null) parentObject="";
-        line = num+","+parentObject+","+childObject+",";
+        line = num+","+category+","+parentObject+","+childObject+",";
         return line;
     }//get
 
