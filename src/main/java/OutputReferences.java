@@ -1,4 +1,5 @@
 import org.omg.PortableInterceptor.LOCATION_FORWARD;
+import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
 import javax.xml.transform.OutputKeys;
@@ -43,6 +44,7 @@ public class OutputReferences {
             DOMSource domSourcee = new DOMSource(rootReferences.getOwnerDocument());
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             transformer.setOutputProperty(OutputKeys.METHOD, "xml");
+            transformer.setOutputProperty("{http://xml.apache.org/xslt} ident-amount", "4");
             StreamResult result = new StreamResult(sourse);
             transformer.transform(domSourcee, result);
 
