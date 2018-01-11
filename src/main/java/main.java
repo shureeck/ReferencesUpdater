@@ -49,7 +49,7 @@ public class main {
             File referConv = GetPath.getReferenceXMLPath(new File(pathReference));
             File targConv = GetPath.getTargetXMLPath(new File(pathTarget));
 
-            if (!referConv.equals(null) && !targConv.equals(null)) {
+            if (referConv!=null && targConv!=null) {
                 //Update Conversion reference
                 Node rootNodeReference = ReferenceConversion.ubdateConversionRefernce(referConv, targConv, testList);
 

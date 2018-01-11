@@ -54,8 +54,7 @@ public class ReferenceConversion {
         else if(listUpdatedObjects.size()<testList.size()){
             System.out.println("-----------------------------------------------------------------------------");
             Logger.setLog("-----------------------------------------------------------------------------");
-            System.out.println("Warning: Objects were not updated:");
-            Logger.setLog("Warning: Objects were not updated:");
+            int count=0;
             i=0;
             while (testList.size()>i){
                 int j=0;
@@ -65,12 +64,17 @@ public class ReferenceConversion {
                     }
                     j++;
                     if(j>=listUpdatedObjects.size()){
-                        System.out.println(testList.get(i).getTestListLine());
-                        Logger.setLog(testList.get(i).getTestListLine());
+                        System.out.println("Warning: Objects was not updated: " + testList.get(i).getTestListLine());
+                        Logger.setLog("Warning: Objects was not updated: " + testList.get(i).getTestListLine());
+                        count++;
                         break;
                     }
                 }
                 i++;
+            }
+            if (count==0){
+                System.out.println("Warning: Test list contain duplicate objects. Check test list please!");
+                Logger.setLog("Warning: Test list contain duplicate objects. Check test list please!");
             }
             System.out.println("-----------------------------------------------------------------------------");
             Logger.setLog("-----------------------------------------------------------------------------");

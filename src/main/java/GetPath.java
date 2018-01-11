@@ -6,9 +6,8 @@ import java.util.List;
 public class GetPath {
     public static File getSctPath( File directory){
         File outFile=null;
-        if (directory!=null) {
-
-            File[] arrFiles = directory.listFiles();
+        File[] arrFiles = directory.listFiles();
+        if (directory!=null && arrFiles!=null) {
             List<File> lst = Arrays.asList(arrFiles);
 
             int i = 0;
@@ -37,8 +36,9 @@ public class GetPath {
 
     public static File getTargetXMLPath( File directory){
         File outFile=null;
-        if(directory!=null) {
-            File[] arrFiles = directory.listFiles();
+        File[] arrFiles = directory.listFiles();
+        if(directory!=null && arrFiles!=null) {
+
             List<File> lst = Arrays.asList(arrFiles);
 
             int i = 0;
@@ -53,15 +53,16 @@ public class GetPath {
             }
         }//if
         else {
-            System.out.println("Error: The path to directory is missing ");
+            System.out.println("Error: The path to directory is missing");
         }
         return outFile;
     }
 
     public static File getReferenceXMLPath( File directory){
         File outFile=null;
-        if (directory!=null) {
-            File[] arrFiles = directory.listFiles();
+        File[] arrFiles = directory.listFiles();
+        if (directory!=null && arrFiles!=null) {
+
             List<File> lst = Arrays.asList(arrFiles);
 
             int i = 0;

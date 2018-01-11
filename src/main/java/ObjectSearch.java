@@ -3,6 +3,9 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class ObjectSearch {
     public ArrayList<Node> objectSearch(Element rootXML, ArrayList <TestListString> testlist){
@@ -11,6 +14,7 @@ public class ObjectSearch {
         int i=0;
         TestListString tlString;
         ArrayList<Node> nodeArrys = new ArrayList<>();
+        HashSet<Node> nodeSet = new HashSet<>();
 
         while (i<testlist.size()){
             tlString=testlist.get(i);
@@ -27,7 +31,8 @@ public class ObjectSearch {
                 Element elObjct = (Element)elNode;
 
                 if(objct.equalsIgnoreCase(elObjct.getAttribute("name"))){
-                   nodeArrys.add(elNode);
+                   nodeSet.add(elNode);
+            //       nodeArrys.add(elNode);
                    count++;
                 }//if
                 j++;
@@ -38,6 +43,7 @@ public class ObjectSearch {
          ///   System.out.println("Номер "+item);
             i++;
         }//while
+        nodeArrys.addAll(nodeSet);
         return nodeArrys;
     }//objectSearch
 
@@ -48,6 +54,7 @@ public class ObjectSearch {
         int i=0;
         TestListString tlString;
         ArrayList<Node> nodeArrys = new ArrayList<>();
+        HashSet<Node> nodeSet = new HashSet<>();
 
         while (i<testlist.size()){
             tlString=testlist.get(i);
@@ -69,7 +76,8 @@ public class ObjectSearch {
                     String fullNameSource =((elAIMessage.getAttribute("fullNameSource")).toLowerCase().trim())+".";
 
                     if(fullNameSource.contains(objct+".")){
-                        nodeArrys.add(elNode);
+                        nodeSet.add(elNode);
+                        // nodeArrys.add(elNode);
                         count++;
                     }//if
 
@@ -82,6 +90,7 @@ public class ObjectSearch {
             ///   System.out.println("Номер "+item);
             i++;
         }//while
+        nodeArrys.addAll(nodeSet);
         return nodeArrys;
     }//objectSearch
 }
