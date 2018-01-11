@@ -44,7 +44,7 @@ public class OutputReferences {
             DOMSource domSourcee = new DOMSource(rootReferences.getOwnerDocument());
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             transformer.setOutputProperty(OutputKeys.METHOD, "xml");
-            transformer.setOutputProperty("{http://xml.apache.org/xslt} ident-amount", "4");
+            transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
             StreamResult result = new StreamResult(sourse);
             transformer.transform(domSourcee, result);
 
