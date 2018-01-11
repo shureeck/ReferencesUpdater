@@ -23,6 +23,7 @@ public class ReferenceAI {
         i=0;
         while (i<referenceNodesAI.size()){
             org.w3c.dom.Node parentAI = referenceNodesAI.get(i).getParentNode();
+            parentAI.removeChild(referenceNodesAI.get(i).getNextSibling());
             parentAI.removeChild(referenceNodesAI.get(i));
             i++;
         }

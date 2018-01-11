@@ -23,6 +23,7 @@ public class ReferenceConversion {
         i=0;
         while (i<referenceNodes.size()){
             org.w3c.dom.Node parent = referenceNodes.get(i).getParentNode();
+            parent.removeChild(referenceNodes.get(i).getNextSibling());
             parent.removeChild(referenceNodes.get(i));
             System.out.println("DONE: Object "+((Element)referenceNodes.get(i)).getAttribute("name")+" was removed");
             i++;
