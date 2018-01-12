@@ -27,13 +27,16 @@ public class OutputReferences {
             Files.copy(sourse.toPath(), target.toPath(), REPLACE_EXISTING);
             System.out.println("Done: Reference file "+sourse.getName()+" was copied into "+target.getAbsolutePath());
             Logger.setLog("Done: Reference file "+sourse.getName()+" was copied into "+target.getAbsolutePath());
+
             Files.deleteIfExists(sourse.toPath());
+
             System.out.println("Done: Reference file "+sourse.getName()+" was deleted");
             Logger.setLog("Done: Reference file "+sourse.getName()+" was deleted");
         }
         catch (IOException e){
             System.out.println("Error: Impossible copy file "+sourse.getName());
             Logger.setLog("Error: Impossible copy file "+sourse.getName()+"\n"+e.toString());
+            Logger.setLog(e.getStackTrace().toString());
             e.printStackTrace();
         }
 
@@ -42,9 +45,11 @@ public class OutputReferences {
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             DOMSource domSourcee = new DOMSource(rootReferences.getOwnerDocument());
+
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             transformer.setOutputProperty(OutputKeys.METHOD, "xml");
             transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
+
             StreamResult result = new StreamResult(sourse);
             transformer.transform(domSourcee, result);
 
@@ -54,6 +59,7 @@ public class OutputReferences {
         catch (TransformerException e){
             System.out.println("Error: Impossible create reference "+sourse.getName()+" into "+sourse.getAbsolutePath());
             Logger.setLog("Error: Impossible create reference "+sourse.getName()+" into "+sourse.getAbsolutePath()+"\n"+e.toString());
+            Logger.setLog(e.getStackTrace().toString());
             e.printStackTrace();
         }
     }

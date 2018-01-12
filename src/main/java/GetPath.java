@@ -6,8 +6,13 @@ import java.util.List;
 public class GetPath {
     public static File getSctPath( File directory){
         File outFile=null;
-        File[] arrFiles = directory.listFiles();
-        if (directory!=null && arrFiles!=null) {
+        File[] arrFiles=null;
+
+        if (directory!=null) {
+            arrFiles = directory.listFiles();
+        }
+
+        if (arrFiles!=null) {
             List<File> lst = Arrays.asList(arrFiles);
 
             int i = 0;
@@ -29,15 +34,22 @@ public class GetPath {
             }
         }//if
         else {
-            System.out.println("Error: The path to directory is missing ");
+            System.out.println("Error: There are no files in the directory, or specified folder are missing \n" +
+                    directory.getPath());
+            Logger.setLog("Error: There are no files in the directory, or specified folder are missing \n" +
+                    directory.getPath());
         }
         return outFile;
     }
 
     public static File getTargetXMLPath( File directory){
         File outFile=null;
-        File[] arrFiles = directory.listFiles();
-        if(directory!=null && arrFiles!=null) {
+        File[] arrFiles=null;
+
+        if (directory!=null) {
+            arrFiles = directory.listFiles();
+        }
+        if(arrFiles!=null) {
 
             List<File> lst = Arrays.asList(arrFiles);
 
@@ -47,22 +59,30 @@ public class GetPath {
                 if (temp.equalsIgnoreCase("target.xml")) {
                     outFile = lst.get(i);
                     System.out.println("Done:File " + outFile.getPath() + " was found");
+                    Logger.setLog("Done:File " + outFile.getPath() + " was found");
                     break;
                 }
                 i++;
             }
         }//if
         else {
-            System.out.println("Error: The path to directory is missing");
+            System.out.println("Error: There are no file target.xml in the directory, or specified folder are missing \n" +
+                    directory.getPath());
+            Logger.setLog("Error: There are no file target.xml in the directory, or specified folder are missing \n" +
+                    directory.getPath());
         }
         return outFile;
     }
 
     public static File getReferenceXMLPath( File directory){
         File outFile=null;
-        File[] arrFiles = directory.listFiles();
-        if (directory!=null && arrFiles!=null) {
+        File[] arrFiles=null;
 
+        if (directory!=null) {
+            arrFiles = directory.listFiles();
+        }
+
+        if (arrFiles!=null) {
             List<File> lst = Arrays.asList(arrFiles);
 
             int i = 0;
@@ -73,21 +93,26 @@ public class GetPath {
                     outFile = lst.get(i);
                     count++;
                     System.out.println("Done:Reference file " + outFile.getPath() + " was found");
-                    break;
+                    Logger.setLog("Done:Reference file " + outFile.getPath() + " was found");
                 }
                 i++;
             }
 
             if (count > 1) {
-                System.out.println("Error: There are " + count + " *.sct files in directory " + directory.getPath() + ". Must be only one.");
+                System.out.println("Error: There are " + count + " *.xml files in directory " + directory.getPath() + ". Must be only one.");
+                Logger.setLog("Error: There are " + count + " *.xml files in directory " + directory.getPath() + ". Must be only one.");
                 outFile = null;
             } else if (count < 1) {
-                System.out.println("Error: There are no *.sct files. Must be only one.");
+                System.out.println("Error: There are no *.xml files. Must be only one.");
+                Logger.setLog("Error: There are no *.xml files. Must be only one.");
                 outFile = null;
             }
         }//if
         else {
-            System.out.println("Error: The path to directory is missing ");
+            System.out.println("Error: There are no file *.xml in the directory, or specified folder are missing \n" +
+                    directory.getPath());
+            Logger.setLog("Error: There are no file *.xml in the directory, or specified folder are missing \n" +
+                    directory.getPath());
         }
         return outFile;
     }

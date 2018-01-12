@@ -25,7 +25,8 @@ public class ReferenceConversion {
             org.w3c.dom.Node parent = referenceNodes.get(i).getParentNode();
             parent.removeChild(referenceNodes.get(i).getNextSibling());
             parent.removeChild(referenceNodes.get(i));
-            System.out.println("DONE: Object "+((Element)referenceNodes.get(i)).getAttribute("name")+" was removed");
+            System.out.println("Done: Object "+((Element)referenceNodes.get(i)).getAttribute("name")+" was removed");
+            Logger.setLog("Done: Object "+((Element)referenceNodes.get(i)).getAttribute("name")+" was removed");
             i++;
         }
 
@@ -45,44 +46,12 @@ public class ReferenceConversion {
             i++;
         }
 
+        //Get list of unsupported objects in log
         ArrayList<String> listUpdatedObjects= new ArrayList<>(updater.getListUpdatedObkects());
 
-        if (listUpdatedObjects.size()==testList.size()){
-            System.out.println("Done: All specified objects from test list were updated");
-            Logger.setLog("Done: All specified objects from test list were updated");
-        }
-        else if(listUpdatedObjects.size()<testList.size()){
-            System.out.println("-----------------------------------------------------------------------------");
-            Logger.setLog("-----------------------------------------------------------------------------");
-            int count=0;
-            i=0;
-            while (testList.size()>i){
-                int j=0;
-                while (true){
-                    if (testList.get(i).getObjectName().equalsIgnoreCase(listUpdatedObjects.get(j)) && listUpdatedObjects.size()!=0){
-                        break;
-                    }
-                    j++;
-                    if(j>=listUpdatedObjects.size()){
-                        System.out.println("Warning: Objects was not updated: " + testList.get(i).getTestListLine());
-                        Logger.setLog("Warning: Objects was not updated: " + testList.get(i).getTestListLine());
-                        count++;
-                        break;
-                    }
-                }
-                i++;
-            }
-            if (count==0){
-                System.out.println("Warning: Test list contain duplicate objects. Check test list please!");
-                Logger.setLog("Warning: Test list contain duplicate objects. Check test list please!");
-            }
-            System.out.println("-----------------------------------------------------------------------------");
-            Logger.setLog("-----------------------------------------------------------------------------");
-        }
-        else {
-            System.out.println("Error: The number of updated objects is large then number of objects in test list");
-            Logger.setLog("Error: The number of updated objects is large then number of objects in test list");
-        }
+        CheckQualityUpdating unUpdated = new CheckQualityUpdating();
+        unUpdated.getUnupdatedObjects(testList, listUpdatedObjects);
+
         return rootNodeReference;
     }
 }

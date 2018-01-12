@@ -74,6 +74,7 @@ public class UpdateRefer {
             Logger.setLog("Done:" + targetNode.getNodeName()+" "+((Element) newReferenceNode).getAttribute("name")+" was updated" );
         }//if
     }
+
     public void updateEtalonAI(Node nodeObject,Node referenceNode){
         //get category for  object insert
         NodeList referSchemas=((Element)referenceNode).getElementsByTagName("uuidkey");

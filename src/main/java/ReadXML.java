@@ -1,6 +1,5 @@
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -14,7 +13,6 @@ public class ReadXML {
     {
         Document doc=null;
         try {
-            NodeList dbTree;
 
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder docBuilder = dbFactory.newDocumentBuilder();
@@ -28,16 +26,19 @@ public class ReadXML {
         catch(javax.xml.parsers.ParserConfigurationException e){
             System.out.println("Error: You have wrong parser configuration");
             Logger.setLog("Error: You have wrong parser configuration");
+            Logger.setLog(e.getStackTrace().toString());
             e.printStackTrace();
         }//catch
         catch(org.xml.sax.SAXException e){
             System.out.println("Error:  See stack trace");
             Logger.setLog("Error:  See stack trace\n"+e.toString());
+            Logger.setLog(e.getStackTrace().toString());
             e.printStackTrace();
         }//catch
         catch(java.io.IOException e){
             System.out.println("Error: Input/Output Error");
             Logger.setLog("Error: Input/Output Error");
+            Logger.setLog(e.getStackTrace().toString());
             e.printStackTrace();
         }//catch
         Node root = doc.getDocumentElement();

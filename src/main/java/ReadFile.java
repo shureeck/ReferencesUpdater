@@ -9,6 +9,7 @@ public class ReadFile {
     public void readFile (String path, ArrayList<String> testlist) {
         FileReader sc =null;
         BufferedReader buffer=null;
+
         if (path!=(null)) {
             try {
                 sc = new FileReader(path);
@@ -39,18 +40,20 @@ public class ReadFile {
             catch (FileNotFoundException e) {
                 System.out.println("Error: File not found");
                 Logger.setLog("Error: File not found");
+                Logger.setLog(e.getStackTrace().toString());
              //   e.printStackTrace();
             }//catch;
 
             catch (IOException e) {
                 System.out.println("Error: Could not read file");
                 Logger.setLog("Error: Could not read file");
+                Logger.setLog(e.getStackTrace().toString());
               //  e.printStackTrace();
             }//catch;
         }//if
         else{
-            System.out.println("Error: The path to file is missing");
-            Logger.setLog("Error: The path to file is missing");
+            System.out.println("Error: The path to test list file is missing");
+            Logger.setLog("Error: The path to test list file is missing");
         }
 
     }// fileRead

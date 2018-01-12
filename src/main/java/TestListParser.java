@@ -26,12 +26,15 @@
             strTestListString.setСategory(category);
             strTestListString.setРarentObject(parentObject);
             strTestListString.setСhildObject(childObject);
+
             System.out.println("Done: TestList string was successfully parsed "+strTestListString.getTestListLine());
             Logger.setLog("Done: TestList string was successfully parsed "+strTestListString.getTestListLine());
+
         }//try
         catch(NumberFormatException e){
             System.out.println("Error: Object Number has invalid format. Please check TestListString");
             Logger.setLog("Error: Object Number has invalid format. Please check TestListString");
+            Logger.setLog(e.getStackTrace().toString());
             System.out.println(e);
         }//catch
 
