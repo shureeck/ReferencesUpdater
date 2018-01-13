@@ -1,18 +1,20 @@
 import java.util.ArrayList;
+import static stringconstant.LoggerMessages.*;
 
 /**
  * Created by Poliakov.A on 1/12/2018.
  */
 public class CheckQualityUpdating {
+
     public void getUnupdatedObjects(ArrayList<TestListString>testList, ArrayList<String> updetedObjects){
 
         if (updetedObjects.size()==testList.size()){
-            System.out.println("Done: All specified objects from test list were updated");
-            Logger.setLog("Done: All specified objects from test list were updated");
+            System.out.println(ALL_OBJECTS_UPDATED);
+            Logger.setLog(ALL_OBJECTS_UPDATED);
         }
         else if(updetedObjects.size()<testList.size()){
-            System.out.println("-----------------------------------------------------------------------------");
-            Logger.setLog("-----------------------------------------------------------------------------");
+            System.out.println(SEPARATOR);
+            Logger.setLog(SEPARATOR);
             int count=0;
             int i=0;
 
@@ -24,8 +26,8 @@ public class CheckQualityUpdating {
                     }
                     j++;
                     if(j>=updetedObjects.size()){
-                        System.out.println("Warning: Objects was not updated: " + testList.get(i).getTestListLine());
-                        Logger.setLog("Warning: Objects was not updated: " + testList.get(i).getTestListLine());
+                        System.out.println(OBJECTS_WAS_NOT_UPDATED + testList.get(i).getTestListLine());
+                        Logger.setLog(OBJECTS_WAS_NOT_UPDATED + testList.get(i).getTestListLine());
                         count++;
                         break;
                     }
@@ -33,15 +35,15 @@ public class CheckQualityUpdating {
                 i++;
             }
             if (count==0){
-                System.out.println("Warning: Test list contain duplicate objects. Check test list please!");
-                Logger.setLog("Warning: Test list contain duplicate objects. Check test list please!");
+                System.out.println(DUPLICATED_OBJRCTS_IN_TESTLIST);
+                Logger.setLog(DUPLICATED_OBJRCTS_IN_TESTLIST);
             }
-            System.out.println("-----------------------------------------------------------------------------");
-            Logger.setLog("-----------------------------------------------------------------------------");
+            System.out.println(SEPARATOR);
+            Logger.setLog(SEPARATOR);
         }
         else {
-            System.out.println("Error: The number of updated objects is large then number of objects in test list");
-            Logger.setLog("Error: The number of updated objects is large then number of objects in test list");
+            System.out.println(NUMRER_UPDATED_OBJECTS_MORE_THEN_TEST_LIST);
+            Logger.setLog(NUMRER_UPDATED_OBJECTS_MORE_THEN_TEST_LIST);
         }
 
     }

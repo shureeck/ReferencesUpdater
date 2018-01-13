@@ -5,7 +5,8 @@ import java.util.ArrayList;
 
 public class main {
     public static void main (String[] args){
-       /* String pathTestList="E:\\AutoTests\\Temp\\PostgreSQL_MySQL\\test_list.csv";
+       /* String pathTestList="E:\\Auto
+       \Tests\\Temp\\PostgreSQL_MySQL\\test_list.csv";
         String pathTarget="E:\\AutoTests\\Temp\\PostgreSQL_MySQL\\PostgreSQL_MySQL.sct";
         String pathReference="E:\\AutoTests\\Temp\\PostgreSQL_MySQL\\Reference1.sct";
 */
