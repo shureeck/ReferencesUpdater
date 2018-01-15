@@ -4,8 +4,9 @@ import org.w3c.dom.NodeList;
 
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.Set;
-import java.util.TreeSet;
+
+import static stringconstant.StringsConstants.*;
+import static stringconstant.LoggerMessages.*;
 
 public class ObjectSearch {
     public ArrayList<Node> objectSearch(Element rootXML, ArrayList <TestListString> testlist){
@@ -30,15 +31,15 @@ public class ObjectSearch {
                 Node elNode = nodelist.item(j);
                 Element elObjct = (Element)elNode;
 
-                if(objct.equalsIgnoreCase(elObjct.getAttribute("name"))){
+                if(objct.equalsIgnoreCase(elObjct.getAttribute(NAME))){
                    nodeSet.add(elNode);
             //       nodeArrys.add(elNode);
                    count++;
                 }//if
                 j++;
             }//while
-            System.out.println("Done: "+category+": "+objct+" was found "+count);
-            Logger.setLog("Done: "+category+": "+objct+" was found "+count);
+            System.out.println(DONE+category+COLON+objct+FOUND+count);
+            Logger.setLog(DONE+category+COLON+objct+FOUND+count);
         //    testlist.get(i).setItem(item);
          ///   System.out.println("Номер "+item);
             i++;
@@ -48,8 +49,8 @@ public class ObjectSearch {
     }//objectSearch
 
     public ArrayList<Node> objectSearchAI(Element rootXML, ArrayList <TestListString> testlist){
-        String category= "uuidkey";
-        String subcategory= "MessageAction";
+        String category= UUIDKEY;
+        String subcategory= MESSAGE_ACTION;
         String objct;
         int i=0;
         TestListString tlString;
@@ -64,7 +65,7 @@ public class ObjectSearch {
 
             int j=0;
             int count=0;
-            if(objct.equals("")){
+            if(objct.equals(EMPTY)){
                 i++;
                 continue;
             }
@@ -73,9 +74,9 @@ public class ObjectSearch {
                 Element elObjct = (Element)elNode;
                 Element elAIMessage =(Element) elObjct.getElementsByTagName(subcategory).item(0);
                 if (elAIMessage != null) {
-                    String fullNameSource =((elAIMessage.getAttribute("fullNameSource")).toLowerCase().trim())+".";
+                    String fullNameSource =((elAIMessage.getAttribute(FULL_NAME_SOURCE)).toLowerCase().trim())+DOT;
 
-                    if(fullNameSource.contains(objct+".")){
+                    if(fullNameSource.contains(objct+DOT)){
                         nodeSet.add(elNode);
                         // nodeArrys.add(elNode);
                         count++;
@@ -84,8 +85,8 @@ public class ObjectSearch {
                 }
                 j++;
             }//while
-            System.out.println("Done: "+category+": "+objct+" was found "+count);
-            Logger.setLog("Done: "+category+": "+objct+" was found "+count);
+            System.out.println(DONE+category+COLON+objct+FOUND+count);
+            Logger.setLog(DONE+category+COLON+objct+FOUND+count);
             //    testlist.get(i).setItem(item);
             ///   System.out.println("Номер "+item);
             i++;

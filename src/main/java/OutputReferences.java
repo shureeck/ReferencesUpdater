@@ -1,7 +1,4 @@
-import org.omg.PortableInterceptor.LOCATION_FORWARD;
-import org.w3c.dom.Element;
 import org.w3c.dom.Node;
-
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
@@ -12,31 +9,34 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 
+import static stringconstant.LoggerMessages.*;
+import static stringconstant.StringsConstants.*;
+
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
 public class OutputReferences {
     public  void outputReferences(String path, Node rootReferences){
         //Copy old References into folder with app
-        File dir =new File("TEMP");
+        File dir =new File(TEMP);
         if (!dir.exists()){
             dir.mkdir();
         }
         File sourse = new File(path);
-        File target = new File(dir.toPath()+"\\"+"old_"+sourse.getName());
+        File target = new File(dir.toPath()+"\\"+OLD+sourse.getName());
         try{
             Files.copy(sourse.toPath(), target.toPath(), REPLACE_EXISTING);
-            System.out.println("Done: Reference file "+sourse.getName()+" was copied into "+target.getAbsolutePath());
-            Logger.setLog("Done: Reference file "+sourse.getName()+" was copied into "+target.getAbsolutePath());
+            System.out.println(REFERENCE_FILE+sourse.getName()+COPIED_INTO+target.getAbsolutePath());
+            Logger.setLog(REFERENCE_FILE+sourse.getName()+COPIED_INTO+target.getAbsolutePath());
 
             Files.deleteIfExists(sourse.toPath());
 
-            System.out.println("Done: Reference file "+sourse.getName()+" was deleted");
-            Logger.setLog("Done: Reference file "+sourse.getName()+" was deleted");
+            System.out.println(REFERENCE_FILE+sourse.getName()+DELETED);
+            Logger.setLog(REFERENCE_FILE+sourse.getName()+DELETED);
         }
         catch (IOException e){
-            System.out.println("Error: Impossible copy file "+sourse.getName());
-            Logger.setLog("Error: Impossible copy file "+sourse.getName()+"\n"+e.toString());
-            Logger.setLog(e.getStackTrace().toString());
+            System.out.println(IMPOSSIBLE_COPY_FILE+sourse.getName());
+            Logger.setLog(IMPOSSIBLE_COPY_FILE+sourse.getName()+"\n"+e.getMessage());
+           // Logger.setLog(e.getStackTrace().toString());
             e.printStackTrace();
         }
 
@@ -46,20 +46,20 @@ public class OutputReferences {
             Transformer transformer = transformerFactory.newTransformer();
             DOMSource domSourcee = new DOMSource(rootReferences.getOwnerDocument());
 
-            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-            transformer.setOutputProperty(OutputKeys.METHOD, "xml");
-            transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
+            transformer.setOutputProperty(OutputKeys.INDENT, YES);
+            transformer.setOutputProperty(OutputKeys.METHOD, XML);
+            transformer.setOutputProperty(INDENT_AMOUNT, "4");
 
             StreamResult result = new StreamResult(sourse);
             transformer.transform(domSourcee, result);
 
-            System.out.println("Done: Reference "+sourse.getName()+" was created into "+sourse.getAbsolutePath());
-            Logger.setLog("Done: Reference "+sourse.getName()+" was created into "+sourse.getAbsolutePath());
+            System.out.println(REFERENCE_FILE+sourse.getName()+CREATED_INTO+sourse.getAbsolutePath());
+            Logger.setLog(REFERENCE_FILE+sourse.getName()+CREATED_INTO+sourse.getAbsolutePath());
         }
         catch (TransformerException e){
-            System.out.println("Error: Impossible create reference "+sourse.getName()+" into "+sourse.getAbsolutePath());
-            Logger.setLog("Error: Impossible create reference "+sourse.getName()+" into "+sourse.getAbsolutePath()+"\n"+e.toString());
-            Logger.setLog(e.getStackTrace().toString());
+            System.out.println(IMPOSSIBLE_CREATE_REFERENCE+sourse.getName()+INTO+sourse.getAbsolutePath());
+            Logger.setLog(IMPOSSIBLE_CREATE_REFERENCE+sourse.getName()+INTO+sourse.getAbsolutePath()+"\n"+e.getMessage());
+           // Logger.setLog(e.getStackTrace().toString());
             e.printStackTrace();
         }
     }

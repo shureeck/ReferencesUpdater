@@ -2,6 +2,8 @@ import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import static stringconstant.StringsConstants.*;
+
 /**
  * Created by Poliakov.A on 12/11/2017.
  */
@@ -9,9 +11,9 @@ public class Logger {
     public static void setLog(String msg){
         //Creating date-time formats
         Date date = new Date();
-        SimpleDateFormat formatDate = new SimpleDateFormat("y-M-d");
-        SimpleDateFormat formatTime = new SimpleDateFormat("HH:mm:ss");
-        String logName = "ReferenceUpdater_"+formatDate.format(date)+".log";
+        SimpleDateFormat formatDate = new SimpleDateFormat(DATE_FORMAT );
+        SimpleDateFormat formatTime = new SimpleDateFormat(TIME_FORMAT);
+        String logName = REFERENCE_UPDATER + formatDate.format(date)+LOG;
         File log = new File(logName);
 
         //Create new file if not exist

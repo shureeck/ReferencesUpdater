@@ -1,5 +1,8 @@
 import java.util.Scanner;
 
+import static stringconstant.LoggerMessages.*;
+import static stringconstant.StringsConstants.*;
+
 public class Input {
     public String input(String outputString){
         String inputString=null;
@@ -8,21 +11,21 @@ public class Input {
         try{
             scanner = new Scanner(System.in);
             inputString=scanner.nextLine().trim();
-            inputString=inputString.replaceAll("\\u202A", "");
-            System.out.println("Done: Line was successfully read");
-            Logger.setLog("Done: Line was successfully read");
+            inputString=inputString.replaceAll( UNVISIBLE_u202A, EMPTY);
+            System.out.println(LINE_READ_SUCCESSFULLY);
+            Logger.setLog(LINE_READ_SUCCESSFULLY);
 
-             if(inputString.equalsIgnoreCase("") || inputString==null){
-                 System.out.println("Warning: The string is empty");
-                 Logger.setLog("Warning: The string is empty");
+             if(inputString.equalsIgnoreCase(EMPTY) || inputString==null){
+                 System.out.println(STRING_EMPTY);
+                 Logger.setLog(STRING_EMPTY);
 
                  inputString=null;
              }
         }
         catch (Exception e){
-           System.out.println("Error: Could not read line");
-           Logger.setLog("Error: Could not read line"+"\n"+e.toString());
-           Logger.setLog(e.getStackTrace().toString());
+           System.out.println(COULD_NOT_READ_LINE);
+           Logger.setLog(COULD_NOT_READ_LINE + "\n"+e.getMessage());
+           //Logger.setLog(e.getStackTrace().toString());
         }
        /* finally {
             scanner.close();
