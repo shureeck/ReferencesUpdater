@@ -90,7 +90,7 @@ public class GetPath {
             int count = 0;
             while (i < lst.size()) {
                 String temp = lst.get(i).getName().trim().toLowerCase();
-                if (temp.endsWith(XML)) {
+                if (temp.endsWith(DOT_XML)) {
                     outFile = lst.get(i);
                     count++;
                     System.out.println(REFERENCE_FILE + outFile.getPath() + FOUND);

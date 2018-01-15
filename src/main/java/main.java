@@ -1,7 +1,8 @@
-import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import java.io.File;
 import java.util.ArrayList;
+
+import static stringconstant.StringsConstants.*;
 
 public class main {
     public static void main (String[] args){
@@ -12,9 +13,9 @@ public class main {
 */
 
         Input inPutData = new Input();
-        String pathTestList=inPutData.input("Input the path to the Test List");
-        String pathTarget=inPutData.input("Input the path to the project folder:");
-        String pathReference=inPutData.input("Input the path to the reference folder:\n(ATTENTION: IN THE REFERENCE FOLDER MUST BE PRESENTED REFERENCES FOR CURRENT PAIR ONLY)");
+        String pathTestList=inPutData.input(INPUT_PATH_TO_TESTLIST);
+        String pathTarget=inPutData.input(INPUT_PATH_TO_PROJECT);
+        String pathReference=inPutData.input(INPUT_PATH_TO_REFERNCE+"\n"+ATTENTION);
 
         //Testlist will be read from file
         ArrayList<String> stringsTestList = new ArrayList<>();
