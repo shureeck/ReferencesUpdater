@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 import static stringconstant.StringsConstants.*;
 
-public class main {
-    public static void main (String[] args){
+public class ReferenceUpdater {
+    public void updateReference (){
        /* String pathTestList="E:\\Auto
        \Tests\\Temp\\PostgreSQL_MySQL\\test_list.csv";
         String pathTarget="E:\\AutoTests\\Temp\\PostgreSQL_MySQL\\PostgreSQL_MySQL.sct";
