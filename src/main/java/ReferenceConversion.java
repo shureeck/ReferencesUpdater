@@ -3,6 +3,9 @@ import org.w3c.dom.Node;
 import java.io.File;
 import java.util.ArrayList;
 
+import static stringconstant.LoggerMessages.*;
+import static stringconstant.StringsConstants.*;
+
 /**
  * Created by Poliakov.A on 12/22/2017.
  */
@@ -25,8 +28,8 @@ public class ReferenceConversion {
             org.w3c.dom.Node parent = referenceNodes.get(i).getParentNode();
             parent.removeChild(referenceNodes.get(i).getNextSibling());
             parent.removeChild(referenceNodes.get(i));
-            System.out.println("Done: Object "+((Element)referenceNodes.get(i)).getAttribute("name")+" was removed");
-            Logger.setLog("Done: Object "+((Element)referenceNodes.get(i)).getAttribute("name")+" was removed");
+            System.out.println(OBJECT+((Element)referenceNodes.get(i)).getAttribute(NAME)+REMOVED);
+            Logger.setLog(OBJECT+((Element)referenceNodes.get(i)).getAttribute(NAME)+REMOVED);
             i++;
         }
 

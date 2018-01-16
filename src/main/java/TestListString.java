@@ -1,3 +1,5 @@
+import static stringconstant.StringsConstants.*;
+
 /**
  * Created by Poliakov.A on 11/17/2017.
  */
@@ -10,11 +12,11 @@ public class TestListString {
     private String item;
 
     public TestListString(){
-        parentObject="";
-       childObject="";
-       objct="";
-       category="";
-       item="";
+        parentObject=EMPTY;
+       childObject=EMPTY;
+       objct=EMPTY;
+       category=EMPTY;
+       item=EMPTY;
     }
 
     public TestListString(int num, String category, String parentObject, String childObject){
@@ -54,8 +56,8 @@ public class TestListString {
 
     public String getTestListLine (){
         String line;
-        if (parentObject==null) parentObject="";
-        line = num+","+category+","+parentObject+","+childObject+",";
+        if (parentObject==null) parentObject=EMPTY;
+        line = num+COMMA+category+COMMA+parentObject+COMMA+childObject+COMMA;
         return line;
     }//get
 
@@ -67,11 +69,11 @@ public class TestListString {
     }//set
 
     public String getObjectName(){
-        if (parentObject.trim()==null|parentObject.equalsIgnoreCase(""))
+        if (parentObject.trim()==null|parentObject.equalsIgnoreCase(EMPTY))
             objct=childObject;
 
         else
-            objct=parentObject+"$"+childObject;
+            objct=parentObject+DOLLAR+childObject;
 
         return objct;
     }//get

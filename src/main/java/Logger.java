@@ -30,7 +30,7 @@ public class Logger {
         BufferedWriter writer=null;
         try {
             writer =new BufferedWriter(new FileWriter(log, true));
-            writer.write(formatTime.format(date)+": "+msg+'\n');
+            writer.write(formatTime.format(date)+COLON+msg+'\n');
         }//try
         catch (IOException e){
             e.printStackTrace();

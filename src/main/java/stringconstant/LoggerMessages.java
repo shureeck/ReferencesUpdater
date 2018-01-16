@@ -32,4 +32,20 @@ public class LoggerMessages {
    public static final String CREATED_INTO = " was created into ";
    public static final String IMPOSSIBLE_CREATE_REFERENCE = ERROR + "Impossible create reference ";
    public static final String INTO = " into ";
+   public static final String LINE_READ = DONE + "Line was read: ";
+   public static final String STRING_HAS_WRONG_FORMAT = ERROR + "Read string has wrong format: ";
+   public static final String READ_SUCCESSFULLY = " was read successfully";
+   public static final String FILE_NOT_FOUND =  ERROR + "File not found";
+   public static final String  COULD_NOT_READ_FILE = ERROR + "Could not read file";
+   public static final String PATH_TO_TESTLIST_MISSING = ERROR + "The path to test list file is missing";
+   public static final String WRONG_PARSER_CONFIG = ERROR + "You have wrong parser configuration";
+   public static final String OBJECT = DONE + "Object ";
+   public static final String REMOVED = " was removed";
+   public static final String TESTLIST_SUCCESSFULLY_PARSED = DONE + "TestList string was successfully parsed ";
+   public static final String TARGET_SCHEMA_IS = DONE + " Target schema name is ";
+   public static final String COULD_NOT_GET_SCHEMA_NAME = ERROR + "Could not get schema name";
+   public static final String SCHEMA_ERR = ERROR + " Schema ";
+   public static final String NOT_FOUND_IN_REFERENCE = " in reference file was not found";
+   public static final String TARGET_CATEGORY_IS = DONE + "Target category is ";
+   public static final String WAS_UPDATED = " was updated";
 }
