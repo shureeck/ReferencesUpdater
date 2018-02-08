@@ -11,10 +11,17 @@ public class TargetSchema {
         int i;
 
         String temp = ((Element)object).getAttribute(ARTIFICAL_SRC_FULL_NAME).toLowerCase();
-        i = temp.lastIndexOf(SCHEMA)+7;
-        schemaName=temp.substring(i, temp.indexOf(COMMA, i));
-        System.out.println(TARGET_SCHEMA_IS+schemaName);
-        Logger.setLog(TARGET_SCHEMA_IS+schemaName);
+        if(temp.trim()!=""){
+            i = temp.lastIndexOf(SCHEMA)+7;
+            schemaName=temp.substring(i, temp.indexOf(COMMA, i));
+            System.out.println(TARGET_SCHEMA_IS+schemaName);
+            Logger.setLog(TARGET_SCHEMA_IS+schemaName);
+        }
+        else{
+            Logger.setLog(ARTIFICIAL_SRC_FULL_NAME_WAS_NOT_FOUND);
+            schemaName=getSchemaNoArtificiaFullName(object);
+
+        }
 
         return schemaName;
     }
@@ -38,6 +45,29 @@ public class TargetSchema {
         }//if
 
         return targetSchema;
+    }
+
+    private static String getSchemaNoArtificiaFullName(Node tmp ) {
+        String schemaName=null;
+
+        while (!tmp.getNodeName().equalsIgnoreCase(SCHEMA)) {
+            tmp = tmp.getParentNode();
+
+            if (tmp.getNodeName().equalsIgnoreCase(SCHEMA)) {
+                schemaName = ((Element) tmp).getAttribute(NAME);
+                System.out.println(TARGET_SCHEMA_IS + schemaName);
+                Logger.setLog(TARGET_SCHEMA_IS + schemaName);
+                break;
+            }//if
+
+            if (tmp.getNodeName().equalsIgnoreCase(TREE)) {
+                System.out.println(COULD_NOT_GET_SCHEMA_NAME);
+                Logger.setLog(COULD_NOT_GET_SCHEMA_NAME);
+                schemaName = null;
+                break;
+            }//if
+        }//while
+        return schemaName;
     }
 }
 
