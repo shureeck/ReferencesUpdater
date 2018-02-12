@@ -25,6 +25,8 @@ public class StringsConstants {
     public static final String TREE = "tree";
     public static final String SPACE = " ";
     public static final String ARTIFICAL_SRC_FULL_NAME = "artificial-src-full-name";
+    public static final String RELATION ="relation";
+    public static final String TYPE ="type";
 
     public static final String DATE_FORMAT = "y-M-d";
     public static final String TIME_FORMAT = "HH:mm:ss";

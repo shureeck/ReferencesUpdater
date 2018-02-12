@@ -3,6 +3,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 
 import static stringconstant.StringsConstants.*;
@@ -87,11 +88,58 @@ public class ObjectSearch {
             }//while
             System.out.println(DONE+category+COLON+objct+FOUND+count);
             Logger.setLog(DONE+category+COLON+objct+FOUND+count);
-            //    testlist.get(i).setItem(item);
-            ///   System.out.println("Номер "+item);
             i++;
         }//while
         nodeArrys.addAll(nodeSet);
         return nodeArrys;
     }//objectSearch
+
+    public ArrayList<TestListString> searchRelatedObjects(Element rootXML, ArrayList <TestListString> testlist){
+        ArrayList <TestListString> tlRelatedObjects=null;
+
+        NodeList fullRelationList = rootXML.getElementsByTagName(RELATION);
+        ArrayList <Node> relationElements= new ArrayList<>();
+
+        int i =0;
+        while (i<testlist.size()){
+            relationElements.addAll(checkRelatedObject(fullRelationList, testlist.get(i)));
+            i++;
+        }//while
+
+        i=0;
+        while (relationElements.size()>i){
+            NodeList relatedObjectsList = ((Element)relationElements.get(i)).getElementsByTagName(RELATION);
+            int j=0;
+            while (relatedObjectsList.getLength()>j){
+                tlRelatedObjects.add(TestListString.nodeToTestList(relatedObjectsList.item(i), 1));
+                j++;
+            }//while
+            i++;
+        }//while
+        return tlRelatedObjects;
+    }// searchRelatedObjects
+
+    private ArrayList <Node> checkRelatedObject( NodeList fullRelationList, TestListString testListString) {
+        ArrayList<Node> relationElements = new ArrayList<>();
+
+        String objectName = testListString.getObjectName();
+        String category = testListString.getСategory();
+
+        int j = 0;
+        while (j < fullRelationList.getLength()) {
+
+            Element relatedElement = (Element) fullRelationList.item(j);
+            if (relatedElement.getAttribute(NAME).equalsIgnoreCase(objectName) && relatedElement.getAttribute(TYPE).equalsIgnoreCase(category)) {
+                Node temp = relatedElement.getParentNode();
+                if (temp.getChildNodes().getLength() > 3) {
+                    temp.removeChild(relatedElement.getNextSibling());
+                    temp.removeChild(relatedElement);
+                    relationElements.add(temp);
+                }
+                break;
+            }
+            j++;
+        }
+        return relationElements;
+    }//checkRelatedObject
 }

@@ -39,6 +39,7 @@ public class ReferenceUpdater {
             File targAI = GetPath.getSctPath(new File(pathTarget));
             File referAI = GetPath.getSctPath(new File(pathReference));
 
+
             if (targAI!=null && referAI!=null) {
                 //Update reference for AIs
                 Node rootNodeReferenceAI = ReferenceAI.UpdateRerenceAI(referAI, targAI, testList);

@@ -1,3 +1,6 @@
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+
 import static stringconstant.StringsConstants.*;
 
 /**
@@ -77,5 +80,15 @@ public class TestListString {
 
         return objct;
     }//get
+
+    public static TestListString nodeToTestList(Node relationObject, int StartNumber){
+        TestListString testList = new TestListString();
+
+        testList.setObjectNumber(0);
+        testList.setСategory(((Element)relationObject).getAttribute(TYPE));
+        testList.setСhildObject(((Element)relationObject).getAttribute(NAME));
+
+        return testList;
+    }
 
 }

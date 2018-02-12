@@ -19,6 +19,7 @@ public class ReferenceAI {
         ObjectSearch searchAI = new ObjectSearch();
         referenceNodesAI.addAll(searchAI.objectSearchAI(referenceAI, testList));
 
+
         //Remove the exist objects
         i=0;
         while (i<referenceNodesAI.size()){
@@ -35,6 +36,8 @@ public class ReferenceAI {
         //Search AIs for object in target
         ArrayList <Node> targetNodesAI = new ArrayList<>();
         targetNodesAI.addAll(searchAI.objectSearchAI(targetAI, testList));
+
+        searchAI.searchRelatedObjects((Element)rootNodeTargetAI,testList);
 
         //Updating of the  reference
         UpdateRefer updater = new UpdateRefer();
