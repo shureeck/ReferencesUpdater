@@ -59,6 +59,12 @@ public class ReferenceUpdater {
                 //Output Reference file
                 output.outputReferences(referConv.getPath(), rootNodeReference);
             }
+
+            //Get related object list
+            RelatedObjects relatedObjects = new RelatedObjects();
+            ArrayList<String> relatedObjectsList = new ArrayList<>(relatedObjects.getRelatedObjects(targAI,testList));
         }
+
+
     }
 }

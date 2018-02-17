@@ -49,4 +49,6 @@ public class LoggerMessages {
    public static final String TARGET_CATEGORY_IS = DONE + "Target category is ";
    public static final String WAS_UPDATED = " was updated";
    public static final String ARTIFICIAL_SRC_FULL_NAME_WAS_NOT_FOUND =  WARNING + "artificial-src-full-name was not found. Schema name will be get an alternative way";
+   public static final String RELATED_OBJECTS_WAS_FOUND = DONE + "Relation objects were found for ";
+   public static final String RELATED_OBJECTS_WAS_NOT_FOUND = DONE + "Relation objects are missing for ";
 }

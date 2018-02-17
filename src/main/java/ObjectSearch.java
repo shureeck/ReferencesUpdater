@@ -3,7 +3,6 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashSet;
 
 import static stringconstant.StringsConstants.*;
@@ -57,12 +56,11 @@ public class ObjectSearch {
         TestListString tlString;
         ArrayList<Node> nodeArrys = new ArrayList<>();
         HashSet<Node> nodeSet = new HashSet<>();
+        NodeList nodelist = rootXML.getElementsByTagName(category);
 
         while (i<testlist.size()){
             tlString=testlist.get(i);
             objct=tlString.getСhildObject().toLowerCase().trim();
-
-            NodeList nodelist = rootXML.getElementsByTagName(category);
 
             int j=0;
             int count=0;
@@ -94,29 +92,29 @@ public class ObjectSearch {
         return nodeArrys;
     }//objectSearch
 
-    public ArrayList<TestListString> searchRelatedObjects(Element rootXML, ArrayList <TestListString> testlist){
-        ArrayList <TestListString> tlRelatedObjects=null;
-
+    public  ArrayList<Node> searchRelatedObjects(Element rootXML, ArrayList <TestListString> testlist){
+        NodeList relatedObjectsList=null;
+        ArrayList<Node>  relation = new ArrayList<>();
+        //get all related objects
         NodeList fullRelationList = rootXML.getElementsByTagName(RELATION);
-        ArrayList <Node> relationElements= new ArrayList<>();
+        ArrayList <Node> relatedObjectsInTestList= new ArrayList<>();
 
         int i =0;
+        //search related objects for objects from test list
         while (i<testlist.size()){
-            relationElements.addAll(checkRelatedObject(fullRelationList, testlist.get(i)));
+            relatedObjectsInTestList.addAll(checkRelatedObject(fullRelationList, testlist.get(i)));
             i++;
         }//while
-
+       //Get list with relation objects
         i=0;
-        while (relationElements.size()>i){
-            NodeList relatedObjectsList = ((Element)relationElements.get(i)).getElementsByTagName(RELATION);
-            int j=0;
-            while (relatedObjectsList.getLength()>j){
-                tlRelatedObjects.add(TestListString.nodeToTestList(relatedObjectsList.item(i), 1));
-                j++;
-            }//while
+        while (relatedObjectsInTestList.size()>i){
+            relatedObjectsList =((Element)relatedObjectsInTestList.get(i)).getElementsByTagName(RELATION);
+            for (int j=0;relatedObjectsList.getLength()>j;j++){
+                relation.add(relatedObjectsList.item(j));
+            }
             i++;
         }//while
-        return tlRelatedObjects;
+        return relation;
     }// searchRelatedObjects
 
     private ArrayList <Node> checkRelatedObject( NodeList fullRelationList, TestListString testListString) {
@@ -135,7 +133,11 @@ public class ObjectSearch {
                     temp.removeChild(relatedElement.getNextSibling());
                     temp.removeChild(relatedElement);
                     relationElements.add(temp);
-                }
+                    System.out.println(RELATED_OBJECTS_WAS_FOUND + relatedElement.getAttribute(TYPE) + SPACE + relatedElement.getAttribute(NAME));
+                    Logger.setLog(RELATED_OBJECTS_WAS_FOUND + relatedElement.getAttribute(TYPE) + SPACE + relatedElement.getAttribute(NAME));
+                } else
+                {   System.out.println(RELATED_OBJECTS_WAS_NOT_FOUND + relatedElement.getAttribute(TYPE) + SPACE + relatedElement.getAttribute(NAME));
+                    Logger.setLog(RELATED_OBJECTS_WAS_NOT_FOUND + relatedElement.getAttribute(TYPE) + SPACE + relatedElement.getAttribute(NAME));}
                 break;
             }
             j++;

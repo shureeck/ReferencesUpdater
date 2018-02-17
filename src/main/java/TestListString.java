@@ -81,13 +81,20 @@ public class TestListString {
         return objct;
     }//get
 
-    public static TestListString nodeToTestList(Node relationObject, int StartNumber){
+    public TestListString nodeToTestList(Node relationObject){
         TestListString testList = new TestListString();
+        String objectName =((Element)relationObject).getAttribute(NAME);
 
-        testList.setObjectNumber(0);
+        testList.setObjectNumber(000);
         testList.setСategory(((Element)relationObject).getAttribute(TYPE));
-        testList.setСhildObject(((Element)relationObject).getAttribute(NAME));
-
+        if (objectName.contains("$")){
+            testList.setРarentObject(objectName.substring(0,objectName.indexOf("$")));
+            testList.setСhildObject(objectName.substring(objectName.indexOf("$")+1));
+        }
+        else
+        {
+            testList.setСhildObject(objectName);
+        }
         return testList;
     }
 

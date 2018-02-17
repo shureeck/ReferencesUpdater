@@ -37,7 +37,6 @@ public class ReferenceAI {
         ArrayList <Node> targetNodesAI = new ArrayList<>();
         targetNodesAI.addAll(searchAI.objectSearchAI(targetAI, testList));
 
-        searchAI.searchRelatedObjects((Element)rootNodeTargetAI,testList);
 
         //Updating of the  reference
         UpdateRefer updater = new UpdateRefer();
@@ -50,4 +49,5 @@ public class ReferenceAI {
         return rootNodeReferenceAI;
 
     }
+
 }
