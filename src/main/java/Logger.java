@@ -44,4 +44,35 @@ public class Logger {
             }
         }//finally
     }
+
+    public static void appendToTestlist(File testlist,String line){
+        //Creating date-time formats
+        //Create new file if not exist
+        try {
+            if (! testlist.exists()) {
+                testlist.createNewFile();
+            }
+        }
+        catch (IOException e){
+            e.printStackTrace();
+        }
+
+        //Write data in .log file
+        BufferedWriter writer=null;
+        try {
+            writer =new BufferedWriter(new FileWriter( testlist, true));
+            writer.write(line+'\n');
+        }//try
+        catch (IOException e){
+            e.printStackTrace();
+        }//catch
+        finally {
+            try {
+                writer.close();
+            }
+            catch (IOException e){
+                e.printStackTrace();
+            }
+        }//finally
+    }
 }

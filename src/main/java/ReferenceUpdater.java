@@ -2,6 +2,7 @@ import org.w3c.dom.Node;
 import java.io.File;
 import java.util.ArrayList;
 
+import static stringconstant.LoggerMessages.*;
 import static stringconstant.StringsConstants.*;
 
 public class ReferenceUpdater {
@@ -63,6 +64,18 @@ public class ReferenceUpdater {
             //Get related object list
             RelatedObjects relatedObjects = new RelatedObjects();
             ArrayList<String> relatedObjectsList = new ArrayList<>(relatedObjects.getRelatedObjects(targAI,testList));
+
+            if (relatedObjectsList.size()>0){
+                Logger.appendToTestlist (new File(pathTestList),"\n"+RELTED_OBJECTS+"\n");
+                Logger.setLog(SEPARATOR+"\n"+RELTED_OBJECTS+"\n");
+                i=0;
+                while (relatedObjectsList.size()>i){
+                   Logger.appendToTestlist (new File(pathTestList),relatedObjectsList.get(i));
+                    Logger.setLog(relatedObjectsList.get(i));
+                    i++;
+                }
+                Logger.setLog(SEPARATOR);
+            }
         }
 
 
