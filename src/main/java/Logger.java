@@ -29,6 +29,7 @@ public class Logger {
         //Write data in .log file
         BufferedWriter writer=null;
         try {
+            System.out.println(msg);
             writer =new BufferedWriter(new FileWriter(log, true));
             writer.write(formatTime.format(date)+COLON+msg+'\n');
         }//try

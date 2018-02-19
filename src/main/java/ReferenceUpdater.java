@@ -66,7 +66,7 @@ public class ReferenceUpdater {
             ArrayList<String> relatedObjectsList = new ArrayList<>(relatedObjects.getRelatedObjects(targAI,testList));
 
             if (relatedObjectsList.size()>0){
-                Logger.appendToTestlist (new File(pathTestList),"\n"+RELTED_OBJECTS+"\n");
+                Logger.appendToTestlist (new File(pathTestList),"\n\n"+RELTED_OBJECTS);
                 Logger.setLog(SEPARATOR+"\n"+RELTED_OBJECTS+"\n");
                 i=0;
                 while (relatedObjectsList.size()>i){

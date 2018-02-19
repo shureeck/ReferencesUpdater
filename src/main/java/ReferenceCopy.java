@@ -19,16 +19,13 @@ public class ReferenceCopy {
         File target = new File(dir.toPath()+"\\"+OLD+sourse.getName());
         try{
             Files.copy(sourse.toPath(), target.toPath(), REPLACE_EXISTING);
-            System.out.println(REFERENCE_FILE+sourse.getName()+COPIED_INTO+target.getAbsolutePath());
             Logger.setLog(REFERENCE_FILE+sourse.getName()+COPIED_INTO+target.getAbsolutePath());
 
             Files.deleteIfExists(sourse.toPath());
 
-            System.out.println(REFERENCE_FILE+sourse.getName()+DELETED);
             Logger.setLog(REFERENCE_FILE+sourse.getName()+DELETED);
         }
         catch (IOException e){
-            System.out.println(IMPOSSIBLE_COPY_FILE+sourse.getName());
             Logger.setLog(IMPOSSIBLE_COPY_FILE+sourse.getName()+"\n"+e.getMessage());
             // Logger.setLog(e.getStackTrace().toString());
             e.printStackTrace();

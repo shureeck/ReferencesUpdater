@@ -31,7 +31,6 @@ public class UpdateRefer {
             Node newReferenceNode = doc.importNode(nodeObject, true);
             targetNode.appendChild(newReferenceNode);
             wasUpdated.add(((Element) newReferenceNode).getAttribute(NAME));
-            System.out.println(DONE + targetNode.getNodeName()+SPACE+((Element) newReferenceNode).getAttribute(NAME)+WAS_UPDATED );
             Logger.setLog(DONE + targetNode.getNodeName()+SPACE+((Element) newReferenceNode).getAttribute(NAME)+WAS_UPDATED );
         }//if
     }
@@ -43,7 +42,6 @@ public class UpdateRefer {
         Document doc = parent.getOwnerDocument();
         Node newReferenceNode = doc.importNode(nodeObject, true);
         parent.appendChild(newReferenceNode);
-        System.out.println(DONE +((Element) newReferenceNode).getAttribute(NAME)+WAS_UPDATED );
         Logger.setLog(DONE +((Element) newReferenceNode).getAttribute(NAME)+WAS_UPDATED );
 
     }

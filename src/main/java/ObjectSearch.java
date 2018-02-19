@@ -38,10 +38,7 @@ public class ObjectSearch {
                 }//if
                 j++;
             }//while
-            System.out.println(DONE+category+COLON+objct+FOUND+count);
             Logger.setLog(DONE+category+COLON+objct+FOUND+count);
-        //    testlist.get(i).setItem(item);
-         ///   System.out.println("Номер "+item);
             i++;
         }//while
         nodeArrys.addAll(nodeSet);
@@ -84,7 +81,6 @@ public class ObjectSearch {
                 }
                 j++;
             }//while
-            System.out.println(DONE+category+COLON+objct+FOUND+count);
             Logger.setLog(DONE+category+COLON+objct+FOUND+count);
             i++;
         }//while
@@ -133,10 +129,9 @@ public class ObjectSearch {
                     temp.removeChild(relatedElement.getNextSibling());
                     temp.removeChild(relatedElement);
                     relationElements.add(temp);
-                    System.out.println(RELATED_OBJECTS_WAS_FOUND + relatedElement.getAttribute(TYPE) + SPACE + relatedElement.getAttribute(NAME));
                     Logger.setLog(RELATED_OBJECTS_WAS_FOUND + relatedElement.getAttribute(TYPE) + SPACE + relatedElement.getAttribute(NAME));
                 } else
-                {   System.out.println(RELATED_OBJECTS_WAS_NOT_FOUND + relatedElement.getAttribute(TYPE) + SPACE + relatedElement.getAttribute(NAME));
+                {
                     Logger.setLog(RELATED_OBJECTS_WAS_NOT_FOUND + relatedElement.getAttribute(TYPE) + SPACE + relatedElement.getAttribute(NAME));}
                 break;
             }

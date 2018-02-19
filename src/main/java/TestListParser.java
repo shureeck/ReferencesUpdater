@@ -29,7 +29,6 @@ public class TestListParser {
             strTestListString.setРarentObject(parentObject);
             strTestListString.setСhildObject(childObject);
 
-            System.out.println(TESTLIST_SUCCESSFULLY_PARSED+strTestListString.getTestListLine());
             Logger.setLog(TESTLIST_SUCCESSFULLY_PARSED+strTestListString.getTestListLine());
 
         return strTestListString;

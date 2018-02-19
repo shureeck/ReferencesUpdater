@@ -18,7 +18,6 @@ public class TargetCategory {
             while (parentList.getLength()>i){
                 if(((Element)parentList.item(i)).getAttribute(NAME).equalsIgnoreCase(parentNodeName)){
                     targetNode=parentList.item(i);
-                    System.out.println(TARGET_CATEGORY_IS+((Element)targetNode).getAttribute(NAME));
                     Logger.setLog(TARGET_CATEGORY_IS+((Element)targetNode).getAttribute(NAME));
                     break;
                 }//if

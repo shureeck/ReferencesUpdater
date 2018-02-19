@@ -31,11 +31,9 @@ public class OutputReferences {
             StreamResult result = new StreamResult(sourse);
             transformer.transform(domSourcee, result);
 
-            System.out.println(REFERENCE_FILE+sourse.getName()+CREATED_INTO+sourse.getAbsolutePath());
             Logger.setLog(REFERENCE_FILE+sourse.getName()+CREATED_INTO+sourse.getAbsolutePath());
         }
         catch (TransformerException e){
-            System.out.println(IMPOSSIBLE_CREATE_REFERENCE+sourse.getName()+INTO+sourse.getAbsolutePath());
             Logger.setLog(IMPOSSIBLE_CREATE_REFERENCE+sourse.getName()+INTO+sourse.getAbsolutePath()+"\n"+e.getMessage());
            // Logger.setLog(e.getStackTrace().toString());
             e.printStackTrace();

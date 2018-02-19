@@ -6,7 +6,7 @@
 
     <groupId>com.company</groupId>
     <artifactId>ReferencesUpdater</artifactId>
-    <version>1.5</version>
+    <version>2.0.betta</version>
     <build>
         <plugins>
             <plugin>

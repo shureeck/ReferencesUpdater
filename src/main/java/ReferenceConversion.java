@@ -28,7 +28,6 @@ public class ReferenceConversion {
             org.w3c.dom.Node parent = referenceNodes.get(i).getParentNode();
             parent.removeChild(referenceNodes.get(i).getNextSibling());
             parent.removeChild(referenceNodes.get(i));
-            System.out.println(OBJECT+((Element)referenceNodes.get(i)).getAttribute(NAME)+REMOVED);
             Logger.setLog(OBJECT+((Element)referenceNodes.get(i)).getAttribute(NAME)+REMOVED);
             i++;
         }

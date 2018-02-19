@@ -55,13 +55,11 @@ public class TargetSchema {
 
             if (tmp.getNodeName().equalsIgnoreCase(SCHEMA)) {
                 schemaName = ((Element) tmp).getAttribute(NAME);
-                System.out.println(TARGET_SCHEMA_IS + schemaName);
                 Logger.setLog(TARGET_SCHEMA_IS + schemaName);
                 break;
             }//if
 
             if (tmp.getNodeName().equalsIgnoreCase(TREE)) {
-                System.out.println(COULD_NOT_GET_SCHEMA_NAME);
                 Logger.setLog(COULD_NOT_GET_SCHEMA_NAME);
                 schemaName = null;
                 break;
