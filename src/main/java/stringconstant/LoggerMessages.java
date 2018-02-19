@@ -51,4 +51,5 @@ public class LoggerMessages {
    public static final String ARTIFICIAL_SRC_FULL_NAME_WAS_NOT_FOUND =  WARNING + "artificial-src-full-name was not found. Schema name will be get an alternative way";
    public static final String RELATED_OBJECTS_WAS_FOUND = DONE + "Relation objects were found for ";
    public static final String RELATED_OBJECTS_WAS_NOT_FOUND = DONE + "Relation objects are missing for ";
+   public static final String ALREADY_PRESENT_IN_TEST_LIST =" is already present in the TestList ";
 }

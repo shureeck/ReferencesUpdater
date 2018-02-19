@@ -4,6 +4,8 @@ import org.w3c.dom.Node;
 import java.io.File;
 import java.util.ArrayList;
 
+import static stringconstant.LoggerMessages.*;
+
 public class RelatedObjects {
 
     public ArrayList<String> getRelatedObjects(File targetAI, ArrayList<TestListString> testList){
@@ -16,10 +18,26 @@ public class RelatedObjects {
 
         ArrayList<Node> relatedObjects= new ArrayList<>(searchRelated.searchRelatedObjects((Element)rootNodeTargetAI,testList));
         ArrayList<String> relatedObjectsTLString = new ArrayList<>();
+
+        int number = testList.get(testList.size()-1).getObjectNumber();
+
         i=0;
         TestListString testListString = new TestListString();
         while (relatedObjects.size()>i){
-            relatedObjectsTLString.add(testListString.nodeToTestList(relatedObjects.get(i)).getTestListLine());
+
+            testListString=testListString.nodeToTestList(relatedObjects.get(i), ++number);
+            int j=0;
+            //Exclude of duplication of related objects in test list
+            while (testList.size()>j){
+                if (testList.get(j).getObjectName().equalsIgnoreCase(testListString.getObjectName())){
+                    Logger.setLog(DONE+testListString.getObjectName()+ALREADY_PRESENT_IN_TEST_LIST);
+                    break;
+                }
+                j++;
+                if(testList.size()<=j){
+                    relatedObjectsTLString.add(testListString.getTestListLine());
+                }
+            }
             i++;
         }
 

@@ -81,11 +81,11 @@ public class TestListString {
         return objct;
     }//get
 
-    public TestListString nodeToTestList(Node relationObject){
+    public TestListString nodeToTestList(Node relationObject, int number ){
         TestListString testList = new TestListString();
         String objectName =((Element)relationObject).getAttribute(NAME);
 
-        testList.setObjectNumber(000);
+        testList.setObjectNumber(number);
         testList.setСategory(((Element)relationObject).getAttribute(TYPE));
         if (objectName.contains("$")){
             testList.setРarentObject(objectName.substring(0,objectName.indexOf("$")));
