@@ -11,17 +11,18 @@ public class TargetSchema {
         int i;
 
         String temp = ((Element)object).getAttribute(ARTIFICAL_SRC_FULL_NAME).toLowerCase();
-        if(temp.trim()!=""){
-            i = temp.lastIndexOf(SCHEMA)+7;
-            schemaName=temp.substring(i, temp.indexOf(COMMA, i));
-            System.out.println(TARGET_SCHEMA_IS+schemaName);
-            Logger.setLog(TARGET_SCHEMA_IS+schemaName);
-        }
-        else{
-            Logger.setLog(ARTIFICIAL_SRC_FULL_NAME_WAS_NOT_FOUND);
-            schemaName=getSchemaNoArtificiaFullName(object);
-
-        }
+        schemaName=getSchemaNoArtificiaFullName(object);
+//        if(temp.trim()!=""){
+//            i = temp.lastIndexOf(SCHEMA)+7;
+//            schemaName=temp.substring(i, temp.indexOf(COMMA, i));
+//            System.out.println(TARGET_SCHEMA_IS+schemaName);
+//            Logger.setLog(TARGET_SCHEMA_IS+schemaName);
+//        }
+//        else{
+//            Logger.setLog(ARTIFICIAL_SRC_FULL_NAME_WAS_NOT_FOUND);
+//
+//
+//        }
 
         return schemaName;
     }

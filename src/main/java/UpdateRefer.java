@@ -17,7 +17,7 @@ public class UpdateRefer {
         Node targetNode=null;
 
         //get target schema name
-        schemaName = TargetSchema.getTargetSchemaName(nodeObject);
+       schemaName = TargetSchema.getTargetSchemaName(nodeObject);
 
         //get Node target schema
         Node targetSchema = TargetSchema.getTargetSchemaNode(referenceNode,schemaName);
