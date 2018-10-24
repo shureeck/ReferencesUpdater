@@ -6,6 +6,7 @@ import static  stringconstant.StringsConstants.*;
 import static  stringconstant.LoggerMessages.*;
 
 public class TargetSchema {
+
     public static String getTargetSchemaName(Node object){
         String schemaName=null;
         int i;

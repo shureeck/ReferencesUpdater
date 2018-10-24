@@ -3,6 +3,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import java.util.ArrayList;
+import java.util.Stack;
 
 import static stringconstant.StringsConstants.*;
 import static stringconstant.LoggerMessages.*;
@@ -12,18 +13,13 @@ public class UpdateRefer {
     private ArrayList<String> wasUpdated = new ArrayList<>();
 
     public void updateEtalon(Node nodeObject,Node referenceNode){
-        String schemaName=null;
-        Node parentNode=nodeObject.getParentNode();
         Node targetNode=null;
 
-        //get target schema name
-       schemaName = TargetSchema.getTargetSchemaName(nodeObject);
-
-        //get Node target schema
-        Node targetSchema = TargetSchema.getTargetSchemaNode(referenceNode,schemaName);
+        //GetFullPath
+        Stack<Node> stackPath = TargetCategory.getFullPath(nodeObject);
 
         //get category for  object insert
-        targetNode = TargetCategory.getCategoryForInsert(targetSchema,parentNode);
+          targetNode = TargetCategory.getCategoryByFullPath(stackPath, referenceNode);
 
         //update reference file
         if (!targetNode.equals(null)) {
