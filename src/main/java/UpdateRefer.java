@@ -22,13 +22,14 @@ public class UpdateRefer {
           targetNode = TargetCategory.getCategoryByFullPath(stackPath, referenceNode);
 
         //update reference file
-        if (!targetNode.equals(null)) {
+        if (targetNode!=(null)) {
             Document doc = targetNode.getOwnerDocument();
             Node newReferenceNode = doc.importNode(nodeObject, true);
             targetNode.appendChild(newReferenceNode);
             wasUpdated.add(((Element) newReferenceNode).getAttribute(NAME));
             Logger.setLog(DONE + targetNode.getNodeName()+SPACE+((Element) newReferenceNode).getAttribute(NAME)+WAS_UPDATED );
         }//if
+        else Logger.setLog(String.format(OBJECT_WAS_NOT_UPDATED, nodeObject.getNodeName(), ((Element) nodeObject).getAttribute(NAME)));
     }
 
     public void updateEtalonAI(Node nodeObject,Node referenceNode){

@@ -54,4 +54,6 @@ public class LoggerMessages {
     public static final String ALREADY_PRESENT_IN_TEST_LIST = " is already present in the TestList ";
     public static final String UPDATE_OBJECT = DONE + "Update object %s is started";
     public static final String FULL_PATH_FOR_OBJECT = DONE + "Full path for object is %s";
+    public static final String FULL_PATH_WAS_NOT_FOUND = ERROR + "Full path %s was not found";
+    public static final String OBJECT_WAS_NOT_UPDATED = ERROR +"%s %s was not updated";
 }

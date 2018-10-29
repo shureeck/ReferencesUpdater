@@ -39,7 +39,7 @@ public class TargetCategory {
             stack.push(tempNode);
             tempNode = tempNode.getParentNode();
         }
-        Logger.setLog(String.format(UPDATE_OBJECT,  node.getNodeName()+" "+((Element)node).getAttribute(NAME)));
+        Logger.setLog(String.format(UPDATE_OBJECT, node.getNodeName() + " " + ((Element) node).getAttribute(NAME)));
         return stack;
     }
 
@@ -55,6 +55,10 @@ public class TargetCategory {
             fullPathForLog = fullPathForLog + name + ".";
             NodeList nodeList = ((Element) resultCategory).getElementsByTagName(category);
             resultCategory = getElementByName(nodeList, name);
+            if (resultCategory == null) {
+                Logger.setLog(String.format(FULL_PATH_WAS_NOT_FOUND, fullPathForLog));
+                return null;
+            }
         }
         Logger.setLog(String.format(FULL_PATH_FOR_OBJECT, fullPathForLog));
         return resultCategory;
