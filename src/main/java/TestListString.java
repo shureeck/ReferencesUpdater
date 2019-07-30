@@ -91,7 +91,12 @@ public class TestListString {
         String objectName = ((Element) relationObject).getAttribute(NAME);
 
         testList.setObjectNumber(number);
-        testList.setСategory(((Element) relationObject).getAttribute(TYPE));
+        String nodeName = relationObject.getNodeName();
+        if (nodeName.equalsIgnoreCase(RELATION)) {
+            testList.setСategory(((Element) relationObject).getAttribute(TYPE));
+        } else {
+            testList.setСategory(nodeName);
+        }
         testList.setСhildObject(objectName);
 
         return testList;

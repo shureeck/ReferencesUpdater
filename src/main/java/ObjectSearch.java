@@ -45,6 +45,21 @@ public class ObjectSearch {
         return nodeArrys;
     }//objectSearch
 
+    public Node getNodeByName(Element element, String type, String name){
+        NodeList nodeType = element.getElementsByTagName(type);
+        int i =0;
+        while (i<nodeType.getLength()){
+            String tmp =((Element)nodeType.item(i)).getAttribute(NAME);
+            if (tmp.equals(name.trim())){
+                return nodeType.item(i);
+            }
+            i++;
+        }
+        return null;
+    }//getNodeByName
+
+
+
     public ArrayList<Node> objectSearchAI(Element rootXML, ArrayList <TestListString> testlist){
         String category= UUIDKEY;
         String subcategory= MESSAGE_ACTION;

@@ -55,5 +55,10 @@ public class LoggerMessages {
     public static final String UPDATE_OBJECT = DONE + "Update object %s is started";
     public static final String FULL_PATH_FOR_OBJECT = DONE + "Full path for object is %s";
     public static final String FULL_PATH_WAS_NOT_FOUND = ERROR + "Full path %s was not found";
-    public static final String OBJECT_WAS_NOT_UPDATED = ERROR +"%s %s was not updated";
+    public static final String OBJECT_WAS_NOT_UPDATED = ERROR + "%s %s was not updated";
+    public static final String SET_SCHEMA = "Set test schema for test list generation:";
+    public static final String SET_PATH_TO_OBJECT_TYPE_LIST = "Specify path to objects type list:";
+    public static final String SET_PATH_TO_TARGET_XML = "Specify path to .*xml";
+    public static final String TYPE_NOT_FOUND = WARNING + "Objects with type[%s] was not found in *.xml";
+    public static final String LINE_ADDED_IN_TL = DONE + "Line added to test list [%s]";
 }
