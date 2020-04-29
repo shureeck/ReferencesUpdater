@@ -61,4 +61,7 @@ public class LoggerMessages {
     public static final String SET_PATH_TO_TARGET_XML = "Specify path to .*xml";
     public static final String TYPE_NOT_FOUND = WARNING + "Objects with type[%s] was not found in *.xml";
     public static final String LINE_ADDED_IN_TL = DONE + "Line added to test list [%s]";
+    public static final String TESTLIST_FILE = DONE + "Test list file: [%s]";
+    public static final String REFERENCES_PATH = DONE + "References folder is: [%s]";
+    public static final String TARGET_PATH = DONE + "Project folder is: [%s]";
 }
