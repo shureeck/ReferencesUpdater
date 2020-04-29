@@ -33,6 +33,7 @@ public class StringsConstants {
 
     public static final String DATE_FORMAT = "y-M-d";
     public static final String TIME_FORMAT = "HH:mm:ss";
+    public static final String TIME_FORMAT_FOR_NAME = "HHmmss";
     public static final String TESTLIST_STRING_FORMAT = "^\\d+[,].+[,].*[,].+[,].*$";
 
     public static final String INPUT_PATH_TO_TESTLIST = "Input the path to the Test List";
