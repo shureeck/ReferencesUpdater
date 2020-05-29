@@ -1,8 +1,10 @@
+package cli;
+
 import java.io.*;
 import java.util.ArrayList;
 
-import static stringconstant.StringsConstants.*;
-import static stringconstant.LoggerMessages.*;
+import static cli.stringconstant.StringsConstants.*;
+import static cli.stringconstant.LoggerMessages.*;
 
 /**
  * Created by Poliakov.A on 11/15/2017.

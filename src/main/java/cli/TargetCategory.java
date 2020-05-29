@@ -1,13 +1,13 @@
+package cli;
+
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Stack;
 
-import static stringconstant.LoggerMessages.*;
-import static stringconstant.StringsConstants.*;
+import static cli.stringconstant.LoggerMessages.*;
+import static cli.stringconstant.StringsConstants.*;
 
 public class TargetCategory {
     public static Node getCategoryForInsert(Node targetSchema, Node parentNode) {

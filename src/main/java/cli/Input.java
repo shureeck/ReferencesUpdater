@@ -1,7 +1,9 @@
+package cli;
+
 import java.util.Scanner;
 
-import static stringconstant.LoggerMessages.*;
-import static stringconstant.StringsConstants.*;
+import static cli.stringconstant.LoggerMessages.*;
+import static cli.stringconstant.StringsConstants.*;
 
 public class Input {
     public String input(String outputString){
@@ -22,7 +24,7 @@ public class Input {
         }
         catch (Exception e){
            Logger.setLog(COULD_NOT_READ_LINE + "\n"+e.getMessage());
-           //Logger.setLog(e.getStackTrace().toString());
+           //cli.Logger.setLog(e.getStackTrace().toString());
         }
        /* finally {
             scanner.close();

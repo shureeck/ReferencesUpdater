@@ -1,10 +1,12 @@
+package cli;
+
 import org.w3c.dom.Node;
 
 import java.io.File;
 import java.util.ArrayList;
 
-import static stringconstant.LoggerMessages.*;
-import static stringconstant.StringsConstants.*;
+import static cli.stringconstant.LoggerMessages.*;
+import static cli.stringconstant.StringsConstants.*;
 
 public class ReferenceUpdater {
     private String pathTestList;

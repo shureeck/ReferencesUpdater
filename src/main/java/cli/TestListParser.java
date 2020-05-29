@@ -1,4 +1,6 @@
-import static stringconstant.LoggerMessages.*;
+package cli;
+
+import static cli.stringconstant.LoggerMessages.*;
 
 public class TestListParser {
     public TestListString testListStringParser(String str){

@@ -1,4 +1,4 @@
-package stringconstant;
+package cli.stringconstant;
 
 public class LoggerMessages {
     public static final String DONE = "Done: ";

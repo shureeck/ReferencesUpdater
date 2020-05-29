@@ -1,10 +1,12 @@
+package cli;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 
-import static stringconstant.LoggerMessages.*;
+import static cli.stringconstant.LoggerMessages.*;
 
 /**
  * Created by Poliakov.A on 11/16/2017.
@@ -25,17 +27,17 @@ public class ReadXML {
 
         catch(javax.xml.parsers.ParserConfigurationException e){
             Logger.setLog(WRONG_PARSER_CONFIG);
-            //Logger.setLog(e.getStackTrace().toString());
+            //cli.Logger.setLog(e.getStackTrace().toString());
             e.printStackTrace();
         }//catch
         catch(org.xml.sax.SAXException e){
             Logger.setLog(ERROR + e.getMessage());
-           // Logger.setLog(e.getStackTrace().toString());
+           // cli.Logger.setLog(e.getStackTrace().toString());
             e.printStackTrace();
         }//catch
         catch(java.io.IOException e){
             Logger.setLog(ERROR + e.getMessage());
-            //Logger.setLog(e.getStackTrace().toString());
+            //cli.Logger.setLog(e.getStackTrace().toString());
             e.printStackTrace();
         }//catch
         Node root = doc.getDocumentElement();

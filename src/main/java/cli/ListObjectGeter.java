@@ -1,3 +1,5 @@
+package cli;
+
 import java.io.File;
 import java.util.ArrayList;
 
@@ -7,8 +9,8 @@ import java.util.ArrayList;
 public class ListObjectGeter {
     public static void main(String... args) {
         Input in = new Input();
-        String sctFile = in.input("Input *.sct file path");
-        String outFile = in.input("Input output file path file path");
+        String sctFile = in.input("cli.Input *.sct file path");
+        String outFile = in.input("cli.Input output file path file path");
         ReadFile rf = new ReadFile();
         ArrayList<String> lines = new ArrayList(rf.getPercentSFromFile(sctFile));
         File tl = new File(outFile);

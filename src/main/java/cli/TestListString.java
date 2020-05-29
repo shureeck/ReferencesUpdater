@@ -1,7 +1,9 @@
+package cli;
+
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
-import static stringconstant.StringsConstants.*;
+import static cli.stringconstant.StringsConstants.*;
 
 /**
  * Created by Poliakov.A on 11/17/2017.

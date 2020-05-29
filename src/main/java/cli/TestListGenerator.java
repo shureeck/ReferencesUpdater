@@ -1,3 +1,5 @@
+package cli;
+
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -5,8 +7,8 @@ import org.w3c.dom.NodeList;
 import java.io.File;
 import java.util.ArrayList;
 
-import static stringconstant.LoggerMessages.*;
-import static stringconstant.StringsConstants.SCHEMA;
+import static cli.stringconstant.LoggerMessages.*;
+import static cli.stringconstant.StringsConstants.SCHEMA;
 
 /**
  * Created by Poliakov.A on 7/26/2019.

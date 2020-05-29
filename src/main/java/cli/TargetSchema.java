@@ -1,9 +1,11 @@
+package cli;
+
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import static  stringconstant.StringsConstants.*;
-import static  stringconstant.LoggerMessages.*;
+import static  cli.stringconstant.StringsConstants.*;
+import static  cli.stringconstant.LoggerMessages.*;
 
 public class TargetSchema {
 
@@ -17,10 +19,10 @@ public class TargetSchema {
 //            i = temp.lastIndexOf(SCHEMA)+7;
 //            schemaName=temp.substring(i, temp.indexOf(COMMA, i));
 //            System.out.println(TARGET_SCHEMA_IS+schemaName);
-//            Logger.setLog(TARGET_SCHEMA_IS+schemaName);
+//            cli.Logger.setLog(TARGET_SCHEMA_IS+schemaName);
 //        }
 //        else{
-//            Logger.setLog(ARTIFICIAL_SRC_FULL_NAME_WAS_NOT_FOUND);
+//            cli.Logger.setLog(ARTIFICIAL_SRC_FULL_NAME_WAS_NOT_FOUND);
 //
 //
 //        }

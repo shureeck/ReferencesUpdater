@@ -1,9 +1,11 @@
+package cli;
+
 import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 
-import static stringconstant.LoggerMessages.*;
-import static stringconstant.StringsConstants.*;
+import static cli.stringconstant.LoggerMessages.*;
+import static cli.stringconstant.StringsConstants.*;
 
 
 public class GetPath {

@@ -1,8 +1,10 @@
+package cli;
+
 import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import static stringconstant.StringsConstants.*;
+import static cli.stringconstant.StringsConstants.*;
 
 /**
  * Created by Poliakov.A on 12/11/2017.

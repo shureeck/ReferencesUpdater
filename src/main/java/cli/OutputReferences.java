@@ -1,3 +1,5 @@
+package cli;
+
 import org.w3c.dom.Node;
 
 import javax.xml.transform.OutputKeys;
@@ -9,8 +11,8 @@ import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 
 
-import static stringconstant.LoggerMessages.*;
-import static stringconstant.StringsConstants.*;
+import static cli.stringconstant.LoggerMessages.*;
+import static cli.stringconstant.StringsConstants.*;
 
 public class OutputReferences {
     public  void outputReferences(String path, Node rootReferences){
@@ -38,7 +40,7 @@ public class OutputReferences {
         }
      catch (TransformerException e){
             Logger.setLog(IMPOSSIBLE_CREATE_REFERENCE+sourse.getName()+INTO+sourse.getAbsolutePath()+"\n"+e.getMessage());
-           // Logger.setLog(e.getStackTrace().toString());
+           // cli.Logger.setLog(e.getStackTrace().toString());
             e.printStackTrace();
         }
     }

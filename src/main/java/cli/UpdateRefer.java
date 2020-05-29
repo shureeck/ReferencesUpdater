@@ -1,3 +1,5 @@
+package cli;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -6,8 +8,8 @@ import org.w3c.dom.NodeList;
 import java.util.ArrayList;
 import java.util.Stack;
 
-import static stringconstant.StringsConstants.*;
-import static stringconstant.LoggerMessages.*;
+import static cli.stringconstant.StringsConstants.*;
+import static cli.stringconstant.LoggerMessages.*;
 
 
 public class UpdateRefer {

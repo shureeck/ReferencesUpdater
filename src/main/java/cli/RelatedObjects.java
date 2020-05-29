@@ -1,10 +1,12 @@
+package cli;
+
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
 import java.io.File;
 import java.util.ArrayList;
 
-import static stringconstant.LoggerMessages.*;
+import static cli.stringconstant.LoggerMessages.*;
 
 public class RelatedObjects {
     private ArrayList<TestListString> relatedObjectsTestList = new ArrayList<>();

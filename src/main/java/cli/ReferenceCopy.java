@@ -1,10 +1,12 @@
+package cli;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
-import static stringconstant.LoggerMessages.*;;
-import static stringconstant.StringsConstants.*;
+import static cli.stringconstant.LoggerMessages.*;;
+import static cli.stringconstant.StringsConstants.*;
 
 /**
  * Created by Poliakov.A on 1/17/2018.
@@ -27,7 +29,7 @@ public class ReferenceCopy {
         }
         catch (IOException e){
             Logger.setLog(IMPOSSIBLE_COPY_FILE+sourse.getName()+"\n"+e.getMessage());
-            // Logger.setLog(e.getStackTrace().toString());
+            // cli.Logger.setLog(e.getStackTrace().toString());
             e.printStackTrace();
         }
     }

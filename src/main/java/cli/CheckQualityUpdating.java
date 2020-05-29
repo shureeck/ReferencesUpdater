@@ -1,6 +1,8 @@
+package cli;
+
 import java.util.ArrayList;
 
-import static stringconstant.LoggerMessages.*;
+import static cli.stringconstant.LoggerMessages.*;
 
 /**
  * Created by Poliakov.A on 1/12/2018.

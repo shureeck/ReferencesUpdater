@@ -1,11 +1,13 @@
+package cli;
+
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 
 import java.io.File;
 import java.util.ArrayList;
 
-import static stringconstant.LoggerMessages.*;
-import static stringconstant.StringsConstants.*;
+import static cli.stringconstant.LoggerMessages.*;
+import static cli.stringconstant.StringsConstants.*;
 
 /**
  * Created by Poliakov.A on 12/22/2017.

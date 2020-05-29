@@ -1,4 +1,4 @@
-package stringconstant;
+package cli.stringconstant;
 
 public class StringsConstants {
     public static final String SCT = ".sct";
@@ -36,9 +36,9 @@ public class StringsConstants {
     public static final String TIME_FORMAT_FOR_NAME = "HHmmss";
     public static final String TESTLIST_STRING_FORMAT = "^\\d+[,].+[,].*[,].+[,].*$";
 
-    public static final String INPUT_PATH_TO_TESTLIST = "Input the path to the Test List";
-    public static final String INPUT_PATH_TO_PROJECT = "Input the path to the project folder:";
-    public static final String INPUT_PATH_TO_REFERNCE = "Input the path to the reference folder:";
+    public static final String INPUT_PATH_TO_TESTLIST = "cli.Input the path to the Test List";
+    public static final String INPUT_PATH_TO_PROJECT = "cli.Input the path to the project folder:";
+    public static final String INPUT_PATH_TO_REFERNCE = "cli.Input the path to the reference folder:";
     public static final String ATTENTION = "(ATTENTION: IN THE REFERENCE FOLDER MUST BE PRESENTED REFERENCES FOR CURRENT PAIR ONLY)";
     public static final String WOULD_YOU_UPDATE_RELATED_OBJECTS ="Would you like to update related objects automatically? [Y/N]: ";
 
