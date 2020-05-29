@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import static stringconstant.LoggerMessages.*;
 
 public class RelatedObjects {
+    private ArrayList<TestListString> relatedObjectsTestList = new ArrayList<>();
 
     public ArrayList<String> getRelatedObjects(File targetAI, ArrayList<TestListString> testList){
         //Reference xml file will be read
@@ -36,11 +37,16 @@ public class RelatedObjects {
                 j++;
                 if(testList.size()<=j){
                     relatedObjectsTLString.add(testListString.getTestListLine());
+                    this.relatedObjectsTestList.add(testListString);
                 }
             }
             i++;
         }
 
         return relatedObjectsTLString;
+    }
+
+    public ArrayList<TestListString> getRelatedObjectsTestList() {
+        return relatedObjectsTestList;
     }
 }

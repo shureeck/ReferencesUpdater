@@ -10,9 +10,12 @@ public class ReferenceUpdater {
     private String pathTestList;
     private String pathTarget;
     private String pathReference;
+    private String updateRelatedObjects;
+    private String[] args;
 
     public ReferenceUpdater(String... args) {
-        if (args != null && args.length == 3) {
+        this.args = args;
+        if (args != null && (args.length == 3 || args.length == 4)) {
             pathTestList = args[0];
             Logger.setLog(String.format(TESTLIST_FILE, pathTestList));
             pathTarget = args[1];
@@ -20,7 +23,9 @@ public class ReferenceUpdater {
             pathReference = args[2];
             Logger.setLog(String.format(REFERENCES_PATH, pathReference));
 
-
+            if (args.length == 4) {
+                updateRelatedObjects = args[3];
+            }
         } else {
             Input inPutData = new Input();
             pathTestList = inPutData.input(INPUT_PATH_TO_TESTLIST);
@@ -54,6 +59,43 @@ public class ReferenceUpdater {
             File targAI = GetPath.getSctPath(new File(pathTarget));
             File referAI = GetPath.getSctPath(new File(pathReference));
 
+            //Get related object list
+            RelatedObjects relatedObjects = new RelatedObjects();
+            ArrayList<String> relatedObjectsList = new ArrayList<>(relatedObjects.getRelatedObjects(targAI, testList));
+            // Check if related objects present
+            if (relatedObjectsList.size() > 0) {
+                // Add related objects to test-list file
+                Logger.appendToTestlist(new File(pathTestList), "\n" + RELTED_OBJECTS);
+                Logger.setLog(SEPARATOR + "\n" + RELTED_OBJECTS);
+                i = 0;
+                while (relatedObjectsList.size() > i) {
+                    Logger.appendToTestlist(new File(pathTestList), relatedObjectsList.get(i));
+                    Logger.setLog(relatedObjectsList.get(i));
+                    i++;
+                }
+                Logger.setLog(SEPARATOR);
+                //Ask if we need to update automatically
+                if (args == null || args.length == 0) {
+                    System.out.println(WE_FOUND_RELATED_OBJECTS);
+                    // validate input
+                    while (updateRelatedObjects == null) {
+                        updateRelatedObjects = new Input().input(WOULD_YOU_UPDATE_RELATED_OBJECTS);
+                        if (updateRelatedObjects == null || !updateRelatedObjects.trim().toLowerCase().matches("^[yn]$")) {
+                            System.out.println(WAIT_ANSWER_YES_NO);
+                            updateRelatedObjects = null;
+                        }
+                    }
+                } else if (args.length == 3) {
+                    updateRelatedObjects = "null";
+                }
+                Logger.setLog(WOULD_YOU_UPDATE_RELATED_OBJECTS + updateRelatedObjects.toUpperCase());
+
+                if (updateRelatedObjects.trim().equalsIgnoreCase("Y") ||
+                        updateRelatedObjects.trim().equalsIgnoreCase("Yes") ||
+                        updateRelatedObjects.trim().equalsIgnoreCase("true")) {
+                    testList.addAll(relatedObjects.getRelatedObjectsTestList());
+                } else Logger.setLog(WOULD_NOT_UDATED);
+            }
 
             if (targAI != null && referAI != null) {
                 //Update reference for AIs
@@ -74,24 +116,7 @@ public class ReferenceUpdater {
                 //Output Reference file
                 output.outputReferences(referConv.getPath(), rootNodeReference);
             }
-
-            //Get related object list
-            RelatedObjects relatedObjects = new RelatedObjects();
-            ArrayList<String> relatedObjectsList = new ArrayList<>(relatedObjects.getRelatedObjects(targAI, testList));
-
-            if (relatedObjectsList.size() > 0) {
-                Logger.appendToTestlist(new File(pathTestList), "\n" + RELTED_OBJECTS);
-                Logger.setLog(SEPARATOR + "\n" + RELTED_OBJECTS);
-                i = 0;
-                while (relatedObjectsList.size() > i) {
-                    Logger.appendToTestlist(new File(pathTestList), relatedObjectsList.get(i));
-                    Logger.setLog(relatedObjectsList.get(i));
-                    i++;
-                }
-                Logger.setLog(SEPARATOR);
-            }
         }
-
-
     }
 }
+

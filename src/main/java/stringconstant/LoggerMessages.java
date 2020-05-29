@@ -64,4 +64,8 @@ public class LoggerMessages {
     public static final String TESTLIST_FILE = DONE + "Test list file: [%s]";
     public static final String REFERENCES_PATH = DONE + "References folder is: [%s]";
     public static final String TARGET_PATH = DONE + "Project folder is: [%s]";
+    public static final String WE_FOUND_RELATED_OBJECTS = DONE + "We determined the presence of related object. See above.";
+    public static final String WAIT_ANSWER_YES_NO = ERROR + "You should answer Y if Yes or N if No";
+    public static final String WOULD_NOT_UDATED = WARNING + "Related objects would not updated automatically. Execute update manually if it necessary.";
+
 }

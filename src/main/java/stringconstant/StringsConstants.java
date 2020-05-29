@@ -40,5 +40,6 @@ public class StringsConstants {
     public static final String INPUT_PATH_TO_PROJECT = "Input the path to the project folder:";
     public static final String INPUT_PATH_TO_REFERNCE = "Input the path to the reference folder:";
     public static final String ATTENTION = "(ATTENTION: IN THE REFERENCE FOLDER MUST BE PRESENTED REFERENCES FOR CURRENT PAIR ONLY)";
+    public static final String WOULD_YOU_UPDATE_RELATED_OBJECTS ="Would you like to update related objects automatically? [Y/N]: ";
 
 }
