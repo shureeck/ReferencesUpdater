@@ -14,6 +14,7 @@ public class ReferenceUpdater {
     private String pathReference;
     private String updateRelatedObjects;
     private String[] args;
+    private ArrayList<TestListString> testList;
 
     public ReferenceUpdater(String... args) {
         this.args = args;
@@ -64,6 +65,7 @@ public class ReferenceUpdater {
             //Get related object list
             RelatedObjects relatedObjects = new RelatedObjects();
             ArrayList<String> relatedObjectsList = new ArrayList<>(relatedObjects.getRelatedObjects(targAI, testList));
+
             // Check if related objects present
             if (relatedObjectsList.size() > 0) {
                 // Add related objects to test-list file
@@ -98,6 +100,76 @@ public class ReferenceUpdater {
                     testList.addAll(relatedObjects.getRelatedObjectsTestList());
                 } else Logger.setLog(WOULD_NOT_UDATED);
             }
+
+            if (targAI != null && referAI != null) {
+                //Update reference for AIs
+                Node rootNodeReferenceAI = ReferenceAI.UpdateRerenceAI(referAI, targAI, testList);
+
+                //Output Reference AI file
+                output.outputReferences(referAI.getPath(), rootNodeReferenceAI);
+            }
+
+            //Get path for Conversion tests
+            File referConv = GetPath.getReferenceXMLPath(new File(pathReference));
+            File targConv = GetPath.getTargetXMLPath(new File(pathTarget));
+
+            if (referConv != null && targConv != null) {
+                //Update Conversion reference
+                Node rootNodeReference = ReferenceConversion.ubdateConversionRefernce(referConv, targConv, testList);
+
+                //Output Reference file
+                output.outputReferences(referConv.getPath(), rootNodeReference);
+            }
+        }
+    }
+
+    public ArrayList<String> checkRelatedObjects() {
+        ArrayList<String> relatedObjectsList = new ArrayList<>();
+        //Testlist will be read from file
+        ArrayList<String> stringsTestList = new ArrayList<>();
+        ReadFile fileReader = new ReadFile();
+        fileReader.readFile(pathTestList, stringsTestList);
+
+        //Parsing and creation TestLis will be start
+        testList = new ArrayList<>();
+
+        int i = 0;
+        TestListParser parser = new TestListParser();
+        while (i < stringsTestList.size()) {
+            testList.add(parser.testListStringParser(stringsTestList.get(i)));
+            i++;
+        }
+
+        if (pathTarget != null && pathReference != null) {
+            File targAI = GetPath.getSctPath(new File(pathTarget));
+
+            //Get related object list
+            RelatedObjects relatedObjects = new RelatedObjects();
+            relatedObjectsList.addAll(relatedObjects.getRelatedObjects(targAI, testList));
+            // Check if related objects present
+        }
+        return relatedObjectsList;
+    }
+
+    public void UpdateReference(ArrayList<String> relatedObjects) {
+        //Get paths for AI tests
+        if (pathTarget != null && pathReference != null) {
+            File targAI = GetPath.getSctPath(new File(pathTarget));
+            File referAI = GetPath.getSctPath(new File(pathReference));
+            OutputReferences output = new OutputReferences();
+
+            if (relatedObjects != null && relatedObjects.size() > 0) {
+                Logger.appendToTestlist(new File(pathTestList), "\n" + RELTED_OBJECTS);
+                Logger.setLog(SEPARATOR + "\n" + RELTED_OBJECTS);
+                int i = 0;
+                while (relatedObjects.size() > i) {
+                    Logger.appendToTestlist(new File(pathTestList), relatedObjects.get(i));
+                    Logger.setLog(relatedObjects.get(i));
+                    i++;
+                }
+                Logger.setLog(SEPARATOR);
+            }
+
 
             if (targAI != null && referAI != null) {
                 //Update reference for AIs

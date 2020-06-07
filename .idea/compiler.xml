@@ -9,8 +9,14 @@
         <module name="ReferencesUpdater" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="ReferencesUpdater" target="1.7" />
+    <bytecodeTargetLevel target="11">
+      <module name="ReferencesUpdater" target="11" />
     </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_STRING" value="--add-modules=javafx.controls --add-modules=javafx.fxml" />
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="ReferencesUpdater" options="" />
+    </option>
   </component>
 </project>

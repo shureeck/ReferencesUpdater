@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="gui.mainGUIController">
+  <children>
+    <VBox prefHeight="200.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <HBox alignment="BOTTOM_LEFT" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="NEVER">
+          <children>
+            <Label maxHeight="28.0" maxWidth="115.0" minHeight="28.0" minWidth="115.0" prefHeight="28.0" prefWidth="115.0" text="Test-List file path:" HBox.hgrow="NEVER">
+              <font>
+                <Font size="14.0" fx:id="x2" />
+              </font>
+              <HBox.margin>
+                <Insets bottom="5.0" left="10.0" top="10.0" />
+              </HBox.margin>
+            </Label>
+            <ComboBox fx:id="testListPathComboBox" maxHeight="28.0" maxWidth="-1.0" minHeight="28.0" prefHeight="28.0" prefWidth="387.0" HBox.hgrow="NEVER">
+              <items>
+                <FXCollections fx:factory="observableArrayList" />
+              </items>
+              <HBox.margin>
+                <Insets bottom="5.0" left="10.0" top="10.0" />
+              </HBox.margin>
+            </ComboBox>
+            <Button contentDisplay="CENTER" font="$x2" maxHeight="28.0" minHeight="28.0" mnemonicParsing="false" onAction="#onTestListBrowse" prefHeight="28.0" text="Browse" textOverrun="CENTER_ELLIPSIS" HBox.hgrow="NEVER">
+              <HBox.margin>
+                <Insets bottom="5.0" right="10.0" top="10.0" />
+              </HBox.margin>
+            </Button>
+          </children>
+          <padding>
+            <Insets fx:id="x3" />
+          </padding>
+        </HBox>
+        <HBox prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="NEVER">
+          <children>
+            <Label font="$x2" maxHeight="28.0" maxWidth="115.0" minHeight="28.0" minWidth="115.0" prefHeight="28.0" prefWidth="115.0" text="Project path:">
+              <HBox.margin>
+                <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+              </HBox.margin>
+            </Label>
+            <ComboBox fx:id="projectFolderPathComboBox" maxHeight="28.0" minHeight="28.0" prefHeight="28.0" prefWidth="387.0">
+              <items>
+                <FXCollections fx:factory="observableArrayList" />
+              </items>
+              <HBox.margin>
+                <Insets bottom="5.0" top="5.0" fx:id="x4" />
+              </HBox.margin>
+            </ComboBox>
+            <Button contentDisplay="CENTER" font="$x2" maxHeight="28.0" minHeight="28.0" mnemonicParsing="false" onAction="#onProjectPathBrowse" prefHeight="28.0" prefWidth="-1.0" text="Browse" textOverrun="CENTER_ELLIPSIS" HBox.hgrow="NEVER">
+              <HBox.margin>
+                <Insets bottom="5.0" right="10.0" top="5.0" />
+              </HBox.margin>
+            </Button>
+          </children>
+        </HBox>
+        <HBox prefHeight="-1.0" prefWidth="-1.0">
+          <children>
+            <Label font="$x2" maxHeight="28.0" maxWidth="115.0" minHeight="28.0" minWidth="115.0" prefHeight="28.0" prefWidth="115.0" text="References path:">
+              <HBox.margin>
+                <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+              </HBox.margin>
+            </Label>
+            <ComboBox fx:id="referenceFolderPathComboBox" maxHeight="28.0" minHeight="28.0" prefHeight="28.0" prefWidth="387.0">
+              <items>
+                <FXCollections fx:factory="observableArrayList" />
+              </items>
+              <HBox.margin>
+                <Insets bottom="5.0" top="5.0" fx:id="x4" />
+              </HBox.margin>
+            </ComboBox>
+            <Button contentDisplay="LEFT" font="$x2" maxHeight="28.0" minHeight="28.0" mnemonicParsing="false" onAction="#onReferncePathBrowse" prefHeight="28.0" text="Browse" HBox.hgrow="NEVER" HBox.margin="$x4" />
+          </children>
+        </HBox>
+        <HBox maxHeight="-1.0" minHeight="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+          <children>
+            <CheckBox fx:id="updateRelatedObjAutoCheckBox" font="$x2" maxHeight="28.0" minHeight="28.0" mnemonicParsing="false" prefHeight="28.0" text="Update related object avtomatically">
+              <HBox.margin>
+                <Insets bottom="5.0" left="10.0" top="5.0" fx:id="x6" />
+              </HBox.margin>
+            </CheckBox>
+            <Button fx:id="checkRelatedObjButton" alignment="CENTER" contentDisplay="LEFT" disable="true" font="$x2" maxHeight="30.0" minHeight="30.0" mnemonicParsing="false" onAction="#onCheckRelatedObjectClick" prefHeight="30.0" text="Check related objects" textAlignment="LEFT" HBox.hgrow="NEVER">
+              <HBox.margin>
+                <Insets bottom="5.0" left="180.0" right="5.0" top="5.0" />
+              </HBox.margin>
+            </Button>
+          </children>
+          <padding>
+            <Insets bottom="5.0" top="5.0" fx:id="x4" />
+          </padding>
+          <VBox.margin>
+            <Insets fx:id="x3" />
+          </VBox.margin>
+        </HBox>
+        <HBox alignment="CENTER_RIGHT" prefHeight="-1.0" prefWidth="-1.0">
+          <children>
+            <Button fx:id="updateButton" disable="true" font="$x2" maxHeight="28.0" maxWidth="-1.0" minHeight="28.0" minWidth="-1.0" mnemonicParsing="false" onAction="#onUpdateReferenceClick" prefHeight="28.0" prefWidth="73.0" text="Update" textAlignment="CENTER" HBox.hgrow="NEVER">
+              <HBox.margin>
+                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+              </HBox.margin>
+            </Button>
+            <Button contentDisplay="CENTER" font="$x2" maxHeight="30.0" maxWidth="73.0" minHeight="30.0" minWidth="73.0" mnemonicParsing="false" onAction="#onCancelButtonClick" prefHeight="30.0" prefWidth="73.0" text="Cancel" HBox.hgrow="NEVER">
+              <HBox.margin>
+                <Insets bottom="5.0" left="5.0" right="10.0" top="5.0" />
+              </HBox.margin>
+            </Button>
+          </children>
+        </HBox>
+        <VBox fx:id="RelatedObjectsHiddenVBox" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="0.0" prefWidth="100.0" visible="false">
+          <children>
+            <Label font="$x2" text="Related objects:">
+              <VBox.margin>
+                <Insets bottom="5.0" left="10.0" top="5.0" fx:id="x6" />
+              </VBox.margin>
+            </Label>
+            <ScrollPane prefHeight="200.0" prefWidth="200.0">
+              <content>
+                <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0">
+                  <children>
+                    <VBox fx:id="RelatedObjectsVbox" prefHeight="-1.0" prefWidth="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  </children>
+                </AnchorPane>
+              </content>
+            </ScrollPane>
+          </children>
+        </VBox>
+        <VBox prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+          <children>
+            <Label font="$x2" text="Log:" VBox.margin="$x6" />
+            <TextArea id="LoggerTextArea" fx:id="loggerTextArea" editable="false" prefWidth="-1.0" promptText="Process log" wrapText="true" VBox.vgrow="ALWAYS">
+              <VBox.margin>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="5.0" />
+              </VBox.margin>
+            </TextArea>
+          </children>
+          <VBox.margin>
+            <Insets fx:id="x3" />
+          </VBox.margin>
+        </VBox>
+      </children>
+    </VBox>
+  </children>
+</AnchorPane>
