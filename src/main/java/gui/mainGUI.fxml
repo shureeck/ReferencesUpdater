@@ -83,7 +83,7 @@
         </HBox>
         <HBox maxHeight="-1.0" minHeight="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
           <children>
-            <CheckBox fx:id="updateRelatedObjAutoCheckBox" font="$x2" maxHeight="28.0" minHeight="28.0" mnemonicParsing="false" prefHeight="28.0" text="Update related object avtomatically">
+            <CheckBox fx:id="updateRelatedObjAutoCheckBox" font="$x2" maxHeight="28.0" minHeight="28.0" mnemonicParsing="false" prefHeight="28.0" text="Update related object automatically">
               <HBox.margin>
                 <Insets bottom="5.0" left="10.0" top="5.0" fx:id="x6" />
               </HBox.margin>

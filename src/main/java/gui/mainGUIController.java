@@ -30,6 +30,7 @@ import org.w3c.dom.events.EventListener;
 import org.w3c.dom.events.EventTarget;
 
 import java.io.File;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.EventObject;
 import java.util.List;
@@ -39,6 +40,7 @@ public class mainGUIController {
     private String projectFolderPath;
     private String referenceFolderPath;
     private ReferenceUpdater referenceUpdater;
+    PrintStream ps;
 
     @FXML
     private ComboBox<String> testListPathComboBox = new ComboBox<>();
@@ -61,6 +63,7 @@ public class mainGUIController {
 
     @FXML
     private void initialize() {
+        this.ps = new PrintStream(new Console(loggerTextArea));
 
         EventHandler handler = (EventHandler<Event>) event -> {
             if (testListPathComboBox.getValue() != null &&
@@ -150,6 +153,8 @@ public class mainGUIController {
     }
 
     public void onCheckRelatedObjectClick() {
+        System.setErr(ps);
+        System.setOut(ps);
         if (RelatedObjectsVbox.getChildren() != null) {
             RelatedObjectsVbox.getChildren().clear();
         }
